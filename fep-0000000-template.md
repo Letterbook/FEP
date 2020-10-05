@@ -1,0 +1,25 @@
+---
+authors: []
+category: 
+status: DRAFT
+dateSubmitted: 1970-01-01
+dateAccepted:
+relatedFeps: [FEP-522fd66]
+errataOf: []
+---
+# FEP-XXXXXXX: TITLE
+
+## Summary
+
+<!-- A short summary (no more than 200 words) of the proposal. -->
+
+## References
+
+- [ActivityPub] Christopher Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
+- [ABC] Alyssa P.Hacker, [An example proposal](http://example.org/abc.html), 2020
+
+## Copyright
+
+CC0 1.0 Universal (CC0 1.0) Public Domain Dedication 
+
+To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
