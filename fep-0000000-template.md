@@ -1,22 +1,21 @@
 ---
-authors: []
-category: 
+authors: Alyssa P. Hacker <alyssa.p.hacker@social.example>, Chatty Ben <ben@chatty.example>
 status: DRAFT
-dateSubmitted: 1970-01-01
-dateAccepted:
-relatedFeps: [FEP-522fd66]
-errataOf: []
+dateReceived: 1970-01-01
 ---
 # FEP-XXXXXXX: TITLE
+
 
 ## Summary
 
 <!-- A short summary (no more than 200 words) of the proposal. -->
 
+
 ## References
 
 - [ActivityPub] Christopher Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [ABC] Alyssa P.Hacker, [An example proposal](http://example.org/abc.html), 2020
+
 
 ## Copyright
 

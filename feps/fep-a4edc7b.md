@@ -1,3 +1,8 @@
+---
+authors:
+status: PRE-DRAFT
+dateReceived: 1970-01-01
+---
 # FEP-a4edc7b: The Fediverse Enhancement Proposal Process
 
 
@@ -42,9 +47,20 @@ a4edc7b
 
 By using the hash of the title as identifier we reduce the burden on editors to assign unique ids. This require proposal titles to be unique.
 
-### Front Matter
+### Metadata
 
-TODO
+Proposal metadata is placed at the top of the document as key-value pairs between opening and closing ~---~.
+
+Following metadata key-value pairs may be placed at the top of a proposal:
+
+- `authors`: A comma separated list of authors of the proposal.
+- `status`: Indicates the proposal status. Can be either `DRAFT`, `WITHDRAWN` or `FINAL`.
+- `dateReceived`: Date of when the proposal was added to the repository (when status is set to `DRAFT`).
+- `dateWithdrawn`: Date of when the proposal status was set to `WITHDRAWN` (only for proposals with status `WITHDRAWN`).
+- `dateFinalized`: Date of when the proposal status was set to `FINAL` (only for proposals with status `FINAL`).
+- `relatedFeps`: A comma separated list of related FEPs (e.g. `FEP-a4edc7b, FEP-141a22e, FEP-686f746`).
+
+Future FEPs may specify additional metadata fields.
 
 ### Required Sections
 
@@ -80,7 +96,7 @@ Fediverse Enhancement Proposals must be placed in the public domain by the autho
              +-----------------------------+
 ```
 
-1. A Fediverse Enhancement Proposal can be submitted by individuals or groups of individuals (authors) by creating a TODO pull request.
+1. A Fediverse Enhancement Proposal can be submitted by individuals or groups of individuals (authors) by creating a pull request to the FEP repository.
 2. Within seven days one of the editors will read and respond to the proposal. The editor checks if the proposal conforms to the required structure and fits the scope and objective of the FEPs. The editor may request the authors to clarify, justify, or withdraw the proposal. Such a request must not reflect the personal bias of an editor. Rather, it will be made strictly to maintain a high quality of submissions. The editors reserve the right to reject a submission when a proposal amounts to blatant misuse of the process. The authors may seek feedback from the wider community if the submitted proposal is rejected or clarifications are requested.
 3. If a FEP editor approves a submission it receives the status `DRAFT` and is added to the repository.
 4. While a proposal has the status `DRAFT`:
