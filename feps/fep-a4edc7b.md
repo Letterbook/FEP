@@ -80,7 +80,7 @@ Fediverse Enhancement Proposals must be placed in the public domain by the autho
              +-----------------------------+
 ```
 
-1. A Fediverse Enhancement Proposal can be submitted by individuals or groups of individuals (authors) by creating a GitHub pull request or a SocialHub forum post.
+1. A Fediverse Enhancement Proposal can be submitted by individuals or groups of individuals (authors) by creating a TODO pull request.
 2. Within seven days one of the editors will read and respond to the proposal. The editor checks if the proposal conforms to the required structure and fits the scope and objective of the FEPs. The editor may request the authors to clarify, justify, or withdraw the proposal. Such a request must not reflect the personal bias of an editor. Rather, it will be made strictly to maintain a high quality of submissions. The editors reserve the right to reject a submission when a proposal amounts to blatant misuse of the process. The authors may seek feedback from the wider community if the submitted proposal is rejected or clarifications are requested.
 3. If a FEP editor approves a submission it receives the status `DRAFT` and is added to the repository.
 4. While a proposal has the status `DRAFT`:
