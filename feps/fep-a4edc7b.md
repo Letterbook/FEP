@@ -1,7 +1,7 @@
 ---
 authors: pukkamustard <pukkamustard@posteo.net>
-status: PRE-DRAFT
-dateReceived: 1970-01-01
+status: DRAFT
+dateReceived: 2020-10-16
 ---
 # FEP-a4edc7b: The Fediverse Enhancement Proposal Process
 
