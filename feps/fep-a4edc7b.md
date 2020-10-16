@@ -1,5 +1,5 @@
 ---
-authors:
+authors: pukkamustard <pukkamustard@posteo.net>
 status: PRE-DRAFT
 dateReceived: 1970-01-01
 ---
