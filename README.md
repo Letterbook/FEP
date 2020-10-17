@@ -22,7 +22,7 @@ b3f0afb
 5. Submit a Pull Request to this repository containing your proposal.
 6. Within 7 days you will receive feedback from the editors who may request changes or clarifications. If your proposal is accepted it will be added to the repository with the status `DRAFT`.
 7. You are now required to initiate community discussion and collect feedback. While the proposal is in status `DRAFT` you may submit changes to the proposal via Pull Requests.
-8. After at least 60 days of being added to the repository with status `DRAFT` you may request the proposal to be finalized. You must now request final comments from the community. If there are now significant community objections your proposal will reach status `FINAL` after 14 days. Once the proposal has reached status `FINAL` it may no longer be updated.
+8. After at least 60 days of being added to the repository with status `DRAFT` you may request the proposal to be finalized. You must now request final comments from the community. If there are no significant community objections your proposal will reach status `FINAL` after 14 days. Once the proposal has reached status `FINAL` it may no longer be updated.
 
 For more information see [FEP-a4edc7b: The Fediverse Enhancement Proposal Process](./feps/fep-a4edc7b.md).
 
