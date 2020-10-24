@@ -26,6 +26,10 @@ of privacy.
 
 ## Requirements
 
+The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”,
+“SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this
+specification are to be interpreted as described in [RFC-2119].
+
 The proposed protocol for followers collection synchronization makes a number of
 assumptions that may not be suitable to every implementation or deployment.
 
@@ -34,7 +38,7 @@ this proposal unless they match the following requirements:
 - actors managed by an instance are required to all share the same exact URI
   scheme and authority for their `id`, `inbox` and `sharedInbox` URIs
 - such instances are required to manage all actors using the same URI scheme and
-  authority for eitheir their `id`, `inbox` or `sharedInbox` URIs (that is, for
+  authority for either their `id`, `inbox` or `sharedInbox` URIs (that is, for
   instance, two fediverse implementations cannot implement this proposal if they
   are set up on the same exact same domain name, unless implementing an
   additional mechanism to share follower information between them, which is out
@@ -152,6 +156,7 @@ This proposal is implemented by Mastodon since the following Pull Request: https
 
 ## References
 
+- [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html
 - [HTTP-Signatures] A. Backman, J. Richer, M. Sporny, [Signing HTTP Messages](https://tools.ietf.org/html/draft-ietf-httpbis-message-signatures-00.html)
 
 ## Copyright
