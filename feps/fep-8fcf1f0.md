@@ -1,6 +1,7 @@
 ---
 authors: Claire <claire.fep-1d7d@sitedethib.com>
 status: DRAFT
+dateReceived: 2020-10-24
 ---
 # FEP-8fcf1f0: Followers collection synchronization across servers
 
