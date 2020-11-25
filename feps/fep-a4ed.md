@@ -3,7 +3,7 @@ authors: pukkamustard <pukkamustard@posteo.net>
 status: DRAFT
 dateReceived: 2020-10-16
 ---
-# FEP-a4edc7b: The Fediverse Enhancement Proposal Process
+# FEP-a4ed: The Fediverse Enhancement Proposal Process
 
 
 ## Summary
@@ -32,7 +32,7 @@ Proposals may be entertaining and humorous (unlike this proposal).
 
 All Fediverse Enhancement Proposals must be written in English, be properly formatted as CommonMark [CommonMark] and be reasonably grammatical.
 
-Authors should use inclusive language and examples and refrain from using oppressive terminology [Internet-Draft-terminology-00].
+Authors should use inclusive language and examples and refrain from using oppressive terminology [Internet-Draft-terminology].
 
 ### Proposal Title and Identifier
 
@@ -41,8 +41,8 @@ Every Fediverse Enhancement Proposals must have a descriptive title.
 An identifier is computed from the proposal title as the first 7 digits of the sha256 hash (in hex). The identifier can be computed from the title with standard Unix tools:
 
 ```
-$ echo -n "The Fediverse Enhancement Proposal Process" | sha256sum | cut -c-7
-a4edc7b
+$ echo -n "The Fediverse Enhancement Proposal Process" | sha256sum | cut -c-4
+a4ed
 ```
 
 By using the hash of the title as identifier we reduce the burden on editors to assign unique ids. This require proposal titles to be unique.
@@ -58,7 +58,7 @@ Following metadata key-value pairs may be placed at the top of a proposal:
 - `dateReceived`: Date of when the proposal was added to the repository (when status is set to `DRAFT`).
 - `dateWithdrawn`: Date of when the proposal status was set to `WITHDRAWN` (only for proposals with status `WITHDRAWN`).
 - `dateFinalized`: Date of when the proposal status was set to `FINAL` (only for proposals with status `FINAL`).
-- `relatedFeps`: A comma separated list of related FEPs (e.g. `FEP-a4edc7b, FEP-141a22e, FEP-686f746`).
+- `relatedFeps`: A comma separated list of related FEPs (e.g. `FEP-a4ed, FEP-141a, FEP-686f`).
 
 Future FEPs may specify additional metadata fields.
 
@@ -96,7 +96,7 @@ Fediverse Enhancement Proposals must be placed in the public domain by the autho
              +-----------------------------+
 ```
 
-1. A Fediverse Enhancement Proposal can be submitted by individuals or groups of individuals (authors) by creating a pull request to the FEP repository.
+1. A Fediverse Enhancement Proposal can be submitted by individuals or groups of individuals (authors). See the `SUBMISSION_METHODS` file for a list of accepted submission methods.
 2. Within seven days one of the editors will read and respond to the proposal. The editor checks if the proposal conforms to the required structure and fits the scope and objective of the FEPs. The editor may request the authors to clarify, justify, or withdraw the proposal. Such a request must not reflect the personal bias of an editor. Rather, it will be made strictly to maintain a high quality of submissions. The editors reserve the right to reject a submission when a proposal amounts to blatant misuse of the process. The authors may seek feedback from the wider community if the submitted proposal is rejected or clarifications are requested.
 3. If a FEP editor approves a submission it receives the status `DRAFT` and is added to the repository.
 4. While a proposal has the status `DRAFT`:
@@ -109,6 +109,14 @@ Fediverse Enhancement Proposals must be placed in the public domain by the autho
 7. A proposal with status `FINAL` can not be changed or updated.
 8. A proposal with status `WITHDRAWN` remains in the repository and can be resubmitted.
 
+### Editors
+
+A list of editors is maintained in the `EDITORS` file at the root of the FEP repository.
+
+### Submission Methods
+
+A list of methods in which a proposal may be submitted is maintained in the `SUBMISSION_METHODS` file at the root of the FEP repository.
+
 ## History
 
 The process and format described in this proposal is influenced by other community driven documentation efforts such as the BitTorrent Enhancment Proposal Process [BEP-1], Scheme Request for Implementation [SRFI] and the IETF RFC Series [RFC-8729].
@@ -120,7 +128,7 @@ The process and format described in this proposal is influenced by other communi
 - [BEP-1] David Harrison, [The BitTorrent Enhancement Proposal Process](http://bittorrent.org/beps/bep_0001.html), 2008
 - [RFC-8729] Housley, R., Ed., and L. Daigle, Ed., [The RFC Series and RFC Editor](https://www.rfc-editor.org/info/rfc8729), 2020
 - [CommonMark] John MacFarlane, [CommonMark Spec](https://spec.commonmark.org/0.29/) Version 0.29, 2019
-- [Internet-Draft-terminology-00] Mallory Knodel, [Terminology, Power and Oppressive Language](https://tools.ietf.org/id/draft-knodel-terminology-00.html)
+- [Internet-Draft-terminology] Mallory Knodel, [Terminology, Power and Oppressive Language](https://tools.ietf.org/html/draft-knodel-terminology)
 
 
 ## Copyright

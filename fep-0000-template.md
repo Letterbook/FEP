@@ -3,7 +3,7 @@ authors: Alyssa P. Hacker <alyssa.p.hacker@social.example>, Chatty Ben <ben@chat
 status: DRAFT
 dateReceived: 1970-01-01
 ---
-# FEP-XXXXXXX: TITLE
+# FEP-XXXX: TITLE
 
 
 ## Summary
