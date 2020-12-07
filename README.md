@@ -19,7 +19,7 @@ b3f0
 4. Clone this repository.
 3. Copy the FEP template ([fep-0000-template.md](./fep-0000-template.md)) to the [feps/](feps/) folder and change the filename to `fep-abcd.md` where `abcd` is the identifier computed in step 2.
 4. Write down your idea in the newly created file.
-5. Submit a Pull Request to this repository containing your proposal (other submission methods may be listed in [`SUBMISSION_METHODS`](./SUBMISSION_METHODS)).
+5. Submit a Pull Request to this repository containing your proposal (other submission methods may be listed in [`SUBMISSION.md`](./SUBMISSION.md)).
 6. Within 7 days you will receive feedback from the editors who may request changes or clarifications. If your proposal is accepted it will be added to the repository with the status `DRAFT`.
 7. You (as author) are now responsible for initiating community discussion and collecting feedback. While the proposal is in status `DRAFT` you may submit changes to the proposal via Pull Requests.
 8. After at least 60 days of being added to the repository with status `DRAFT` you may request the proposal to be finalized. You must now request final comments from the community. If there are no significant community objections your proposal will reach status `FINAL` after 14 days. Once the proposal has reached status `FINAL` it may no longer be updated.
@@ -28,7 +28,7 @@ For more information see [FEP-a4ed: The Fediverse Enhancement Proposal Process](
 
 # Editors
 
-Editors are listed in the [EDITORS](EDITORS) file.
+Editors are listed in the [EDITORS.md](EDITORS.md) file.
 
 # Copyright
 

@@ -96,7 +96,7 @@ Fediverse Enhancement Proposals must be placed in the public domain by the autho
              +-----------------------------+
 ```
 
-1. A Fediverse Enhancement Proposal can be submitted by individuals or groups of individuals (authors). See the `SUBMISSION_METHODS` file for a list of accepted submission methods.
+1. A Fediverse Enhancement Proposal can be submitted by individuals or groups of individuals (authors). See the `SUBMISSION.md` file for a list of accepted submission methods.
 2. Within seven days one of the editors will read and respond to the proposal. The editor checks if the proposal conforms to the required structure and fits the scope and objective of the FEPs. The editor may request the authors to clarify, justify, or withdraw the proposal. Such a request must not reflect the personal bias of an editor. Rather, it will be made strictly to maintain a high quality of submissions. The editors reserve the right to reject a submission when a proposal amounts to blatant misuse of the process. The authors may seek feedback from the wider community if the submitted proposal is rejected or clarifications are requested.
 3. If a FEP editor approves a submission it receives the status `DRAFT` and is added to the repository.
 4. While a proposal has the status `DRAFT`:
@@ -111,11 +111,11 @@ Fediverse Enhancement Proposals must be placed in the public domain by the autho
 
 ### Editors
 
-A list of editors is maintained in the `EDITORS` file at the root of the FEP repository.
+A list of editors is maintained in the `EDITORS.md` file at the root of the FEP repository.
 
 ### Submission Methods
 
-A list of methods in which a proposal may be submitted is maintained in the `SUBMISSION_METHODS` file at the root of the FEP repository.
+A list of methods in which a proposal may be submitted is maintained in the `SUBMISSION.md` file at the root of the FEP repository.
 
 ## History
 
