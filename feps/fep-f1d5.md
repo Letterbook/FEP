@@ -104,7 +104,7 @@ This list is not comprehensive:
 - [NodeInfo2Repository] Jason Robinson, [jaywink/nodeinfo2](https://github.com/jaywink/nodeinfo2), 2016
 - [ServiceInfo] Jason Robinson, [ServiceInfo - specification for service metadata](https://talk.feneas.org/t/serviceinfo-specification-for-service-metadata/99), 2019
 - [ServiceInfoRepository] Jason Robinson, [feneas/serviceinfo](https://git.feneas.org/feneas/serviceinfo), 2019
-- [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html
+- [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html), 1997
 
 ## Copyright
 
