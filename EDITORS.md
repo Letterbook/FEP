@@ -1,3 +1,3 @@
-- cjslep
+- cjslep <@cj@mastodon.technology>
 - lain
 - pukkamustard <pukkamustard@posteo.net>
