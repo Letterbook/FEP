@@ -21,7 +21,7 @@ protocols it encapsulated include diaspora, pumpio, and gnusocial.
 The NodeInfo specification is incredibly strict in its schema, often requiring
 regex-validation and a closed set of enumerated possible values. As an objection
 to this, the NodeInfo2 fork was created as a form of criticism by removing some
-validation of views and with some logical restructuring of the metadata
+validation of fields and with some logical restructuring of the metadata
 [ServiceInfo]. Building off of NodeInfo and NodeInfo2, ServiceInfo was briefly
 explored [ServiceInfoRepository].
 
@@ -55,11 +55,12 @@ of NodeInfo that have been identified by the community are:
   as HTTP Signatures, webfinger, or OAuth. Whereas the specification is very
   strict, the `metadata` is too lax.
 * The `users.usage` is not denormalized, such that implementations can provide
-  custom pairs of (activity counts, time period in days) that make sense for the
-  software.
+  custom pairs of `(activity counts, time period in days)` that make sense for
+  the software.
 * The `activeHalfyear` and `activeMonth` are ill-named properties for describing
   the time periods of 180 days and 30 days, respectively. A "half of one year"
-  is roughly 182.5 days, 75% of the time. A month is 30 days, 33% of the time.
+  is 180 days 0% of the time and roughly 182.5 days only 75% of the time. A
+  month is 30 days only 33% of the time.
 * The `localPosts` and `localComments` are not denormalized into pairs of
   `(kind, counts)` for software that, for example, hosts audio files, hosts
   videos, or software that does not have comments, or does not have posts.
@@ -69,6 +70,8 @@ of NodeInfo that have been identified by the community are:
 ## Implementations
 
 ### Servers
+
+This list is not comprehensive:
 
 * Mastodon
 * Matrix
@@ -87,8 +90,6 @@ of NodeInfo that have been identified by the community are:
 * Socialhome
 * epicyon
 * apcore
-
-... just to name a few.
 
 ### Clients
 
