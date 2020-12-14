@@ -83,6 +83,7 @@ This list is not comprehensive:
 * PixelFed
 * Misskey
 * Funkwhale
+* Smithereen
 * Plume
 * GNU Social
 * lemmy
