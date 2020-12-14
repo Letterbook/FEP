@@ -41,7 +41,9 @@ Fediverse software SHOULD implement NodeInfo [NodeInfoRepository].
 ## Caveats
 
 At the time of this FEP's writing, the current objections to the current state
-of NodeInfo that have been identified by the community are:
+of NodeInfo that have been identified by the community are below. Note that any
+technical alternatives identified are meant to be illustrative and not
+prescriptive:
 
 * The `software.name` regex is unnecessarily strict. For example, no uppercase
   letters, no spaces, no non-English-alphabet, and no special characters besides
