@@ -48,6 +48,9 @@ prescriptive:
 * The `software.name` regex is unnecessarily strict. For example, no uppercase
   letters, no spaces, no non-English-alphabet, and no special characters besides
   hyphen are permitted.
+* The `software.version` field is required, which is unnecessarily strict.
+  Forcibly requiring software to divulge version information is potentially a
+  security issue.
 * The `inbound` and `outbound` elements are specified as a closed set of enums
   instead of a simple string. Protocol versioning manifests as renaming, having
   to add a new enum, which results in unclear version management.
