@@ -41,11 +41,16 @@ Fediverse software SHOULD implement NodeInfo [NodeInfoRepository].
 ## Caveats
 
 At the time of this FEP's writing, the current objections to the current state
-of NodeInfo that have been identified by the community are:
+of NodeInfo that have been identified by the community are below. Note that any
+technical alternatives identified are meant to be illustrative and not
+prescriptive:
 
 * The `software.name` regex is unnecessarily strict. For example, no uppercase
   letters, no spaces, no non-English-alphabet, and no special characters besides
   hyphen are permitted.
+* The `software.version` field is required, which is unnecessarily strict.
+  Forcibly requiring software to divulge version information is potentially a
+  security issue.
 * The `inbound` and `outbound` elements are specified as a closed set of enums
   instead of a simple string. Protocol versioning manifests as renaming, having
   to add a new enum, which results in unclear version management.
@@ -54,9 +59,20 @@ of NodeInfo that have been identified by the community are:
 * Lacks an extendable method for identifying and versioning other features, such
   as HTTP Signatures, webfinger, or OAuth. Whereas the specification is very
   strict, the `metadata` is too lax.
-* The `users.usage` is not denormalized, such that implementations can provide
+* The `usage.users` is not denormalized, such that implementations can provide
   custom pairs of `(activity counts, time period in days)` that make sense for
   the software.
+* The `usage.users` assumes that user identity is tied to a specific instance of
+  running software. It is unclear how to count `total` users when user identity
+  is: spread across multiple servers, spread across multiple groups, or present
+  within multiple collections of users. Multiple software instances could each
+  have a resonable claim to counting the user as "using" their software, which
+  globally results users being counted more than once.
+* The `usage.users` activity counts likewise assume that user identity is tied
+  to a specific instance of running software. For the same reasons above, where
+  the `total` user counts may result in duplicate counts of the same user across
+  all software running, the activity counts `activeHalfYear` and `activeMonth`
+  may also result in a globally inflated count.
 * The `activeHalfyear` and `activeMonth` are ill-named properties for describing
   the time periods of 180 days and 30 days, respectively. A "half of one year"
   is 180 days 0% of the time and roughly 182.5 days only 75% of the time. A
@@ -83,6 +99,7 @@ This list is not comprehensive:
 * PixelFed
 * Misskey
 * Funkwhale
+* Smithereen
 * Plume
 * GNU Social
 * lemmy
