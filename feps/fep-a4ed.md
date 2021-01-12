@@ -119,7 +119,7 @@ A list of methods in which a proposal may be submitted is maintained in the `SUB
 
 ## History
 
-The process and format described in this proposal is influenced by other community driven documentation efforts such as the BitTorrent Enhancment Proposal Process [BEP-1], Scheme Request for Implementation [SRFI] and the IETF RFC Series [RFC-8729].
+The process and format described in this proposal is influenced by other community driven documentation efforts such as the BitTorrent Enhancement Proposal Process [BEP-1], Scheme Request for Implementation [SRFI] and the IETF RFC Series [RFC-8729].
 
 
 ## References
