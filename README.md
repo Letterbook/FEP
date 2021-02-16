@@ -13,6 +13,7 @@ A Fediverse Enhancement Proposal (FEP) is a document that provides information t
 | [FEP-a4ed: The Fediverse Enhancement Proposal Process](./feps/fep-a4ed.md)          | `FINAL` | [#10](https://git.activitypub.dev/ActivityPubDev/Fediverse-Enhancement-Proposals/issues/10) | 2020-10-16     | 2020-01-18                           |
 | [FEP-8fcf: Followers collection syncrhonization across servers](./feps/fep-8fcf.md) | `DRAFT` | [#11](https://git.activitypub.dev/ActivityPubDev/Fediverse-Enhancement-Proposals/issues/11) | 2020-10-24     | -                                    |
 | [FEP-f1d5: NodeInfo in Fediverse Software](./feps/fep-f1d5.md)                      | `DRAFT` | [#12](https://git.activitypub.dev/ActivityPubDev/Fediverse-Enhancement-Proposals/issues/12) | 2020-12-13     | -                                    |
+| [FEP-400e: Publicly-appendable ActivityPub collections](./feps/fep-400e.md)         | `DRAFT` | [#17](https://git.activitypub.dev/ActivityPubDev/Fediverse-Enhancement-Proposals/issues/17) | 2021-02-16     | -                                    |
 
 # Submitting a FEP
 
