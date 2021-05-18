@@ -51,24 +51,58 @@ While [Activity Vocabulary] specifies `target` as a field with similar semantics
 When an ActivityPub server receives in its inbox a correctly signed `Create` activity with an object that has the `target` field, it does the following:
 
 - Retrieve the collection owner using either `attributedTo` or `id` fields of the abbreviated collection object.
-  - If the collection owner does not exist, or if `attributedTo` doesn't match the actual owner of the collection specified by `id`, the server SHOULD abort processing and MAY return `400 Bad Request`.
+  - If the collection owner does not exist, or if `attributedTo` doesn't match the actual owner of the collection specified by `id`, or if the collection owner is not a local actor, the server SHOULD abort processing and MAY return `400 Bad Request`.
   - If the object could not be added to the collection, for example due to the privacy settings configured by its owner, the server SHOULD either respond with `403 Unauthorized` or respond with `200 OK` and later send a `Reject{Create}` activity to the originating server.
 - Store either the entire object or its `id` in its local storage as belonging to the specified collection.
-- Perform any implementation-specific processing, like sending notifications or forwarding the activity to other servers.
+- Send an `Add` activity to any parties that might be concerned with it. The `target` field in the activity SHOULD only be the collection `id`, and the `object` field SHOULD be the `id` of the object being added. It is RECOMMENDED that this activity is sent to all the collection owner's followers for the sake of data consistency, and it SHOULD be sent to the actor that created the object being added.
+- Perform any implementation-specific processing, like sending notifications.
+
+### Receiving an `Add` activity
+
+When an ActivityPub server receives in its inbox a correctly signed `Add` activity, it SHOULD do the following:
+
+- Retrieve the `actor` either from local storage or from the network.
+- Retrieve the `object`.
+- Check that `target` is the ID of a collection owned by `actor`. If it is not, abort processing and return `400 Bad Request`.
+- Check that `target` in the activity matches `target.id` in the object and that `target.attributedTo` in the object matches the actor ID. If it does not, abort processing and return `400 Bad Request`.
+- Store either the entire object or its `id` in its local storage as belonging to the specified collection.
+- Perform any implementation-specific processing, like sending notifications.
+
+### Example of an `Add` activity
+
+```json
+{
+  "@context":"https://www.w3.org/ns/activitystreams",
+  "actor":"https://example.com/users/1",
+  "id":"https://example.com/posts/41864/activityAdd",
+  "to":[
+    "https://www.w3.org/ns/activitystreams#Public",
+    "https://example.com/users/1/followers",
+    "https://example.com/users/6946"
+  ],
+  "type":"Add",
+  "object":"https://example.com/posts/41864",
+  "target":"https://example.com/users/1/wall"
+}
+```
 
 ## Deleting an object from a collection
 
-Since the collection owner has complete authority over the contents of the collection, they can delete any objects from it. When an object is deleted from a collection by its owner, their server SHOULD send a `Delete` activity to at least the server of the actor that created the object. That server then SHOULD delete the object as if the deletion was initiated by its creator.
+Since the collection owner has complete authority over the contents of the collection, they can delete any objects from it. When an object is deleted from a collection by its owner, their server SHOULD send a `Delete` activity to at least the server of the actor that created the object; it's also RECOMMENDED that this activity is sent to all the servers that `Add` was sent to. Those servers then SHOULD delete the object as if the deletion was initiated by its creator.
 
 ## Moving an object between collections
 
 In some use cases, it might make sense to allow objects to be moved between collections, for example, a group moderator might want to move a photo between photo albums in a group, or a forum moderator might want to split some messages into a separate thread. It's only possible to move objects between collections that are owned by the same actor.
 
-When moving an object between collections, the collection owner SHOULD send a `Move` activity to the server of the object creator, specifying the target collection and the `id` of the object. That server then SHOULD update the `target` field in its stored copy of the object.
+When moving an object between collections, the collection owner SHOULD send a `Move` activity to at least the server of the object creator, specifying the target collection and the `id` of the object; it's also RECOMMENDED that this activity is sent to all the servers that `Add` was sent to. Those servers then SHOULD update the `target` field in their stored copies of the object.
+
+## Security considerations
+
+The requirement of an `Add` activity sent by a collection owner largely prevents a bad actor from effectively adding something to a collection against the collection owner's will while also helping data consistency across servers. However, there's still one case when this is possible. When a server fetches an object that has a `target` field directly, for example when a user has entered its URL into a search box or when it is referenced by a field such as `inReplyTo`, there's presently no reliable way to verify whether the object actually belongs to the collection.
 
 ## Implementations
 
-This proposal is implemented in Smithereen for both user and group walls since the following commit: https://github.com/grishka/Smithereen/commit/8492183bd3733e67a4e3391150b462e6a86bd050
+This proposal is implemented in Smithereen for both user and group walls since the following commit: https://github.com/grishka/Smithereen/commit/de013593dde06a3091ecfbd32960a694d79c146e
 
 ## References
 
