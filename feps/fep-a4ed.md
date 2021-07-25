@@ -39,14 +39,14 @@ Authors should use inclusive language and examples and refrain from using oppres
 
 Every Fediverse Enhancement Proposals must have a descriptive title.
 
-An identifier is computed from the proposal title as the first 7 digits of the sha256 hash (in hex). The identifier can be computed from the title with standard Unix tools:
+An identifier is computed from the proposal title as the first 4 digits of the sha256 hash (in hex). The identifier can be computed from the title with standard Unix tools:
 
 ```
 $ echo -n "The Fediverse Enhancement Proposal Process" | sha256sum | cut -c-4
 a4ed
 ```
 
-By using the hash of the title as identifier we reduce the burden on editors to assign unique ids. This require proposal titles to be unique.
+By using the hash of the title as identifier we reduce the burden on editors to assign unique ids. This requires proposal titles to be unique.
 
 ### Metadata
 
@@ -65,7 +65,7 @@ Future FEPs may specify additional metadata fields.
 
 ### Required Sections
 
-Every FEP should include at least following sections:
+Every FEP should include at least the following sections:
 
 - Summary: A short (no more than 200 words) summary of the proposal.
 - Copyright: Indicating that the proposal has been placed in the public domain.
