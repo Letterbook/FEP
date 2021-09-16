@@ -1,3 +1,4 @@
 - cjslep <@cj@mastodon.technology>
 - lain
 - pukkamustard <pukkamustard@posteo.net>
+- weex <davesterry@gmail.com>
