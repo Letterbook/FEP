@@ -2,6 +2,6 @@
 
 A list of methods for submitting a FEP proposal.
 
-## git.activitypub.dev
+## codeberg.org
 
-A proposal may be submitted by creating a pull request to the FEP Git repository hosted at git.activitypub.dev (https://git.activitypub.dev/ActivityPubDev/Fediverse-Enhancement-Proposals).
+A proposal may be submitted by creating a pull request to the FEP Git repository hosted at codeberg.org (https://codeberg.org/fediverse/fep).
