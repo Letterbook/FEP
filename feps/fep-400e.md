@@ -1,7 +1,8 @@
 ---
 authors: Gregory Klyushnikov <activitypub@grishka.me>
-status: DRAFT
+status: FINAL
 dateReceived: 2021-02-16
+dateFinalized: 2022-02-04
 ---
 # FEP-400e: Publicly-appendable ActivityPub collections
 
