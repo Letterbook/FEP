@@ -15,12 +15,14 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## Object links
 
+It is expected that software will allow users to define object links using some kind of microsyntax, similar to `@mention` and `#hashtag` microsyntaxes. The exact way of defining object links may vary depending on the use case and is out of scope of this document.
+
 If object's content has links to other objects, that object MAY have the `tag` property, where each link is represented as a `Link` object, as suggested by [Activity Vocabulary]. The properties of this `Link` object are:
 
 - `type` (REQUIRED): the type MUST be `Link`.
 - `mediaType` (REQUIRED): the media type SHOULD be `application/activity+json`.
 - `href` (REQUIRED): the href property MUST contain the URI of the referenced object.
-- `name` (OPTIONAL): if link is a quote, its representation SHOULD have the `name` property whose value starts with `RE:`, followed by referenced object's URI.
+- `name` (OPTIONAL): the `name` SHOULD match the microsyntax used in object's content.
 
 Example:
 
@@ -38,6 +40,8 @@ Example:
     ]
 }
 ```
+
+Note that the `content` still includes the `RE: <url>` microsyntax but consuming implementations are not required to parse that in order to make the appropriate associations.
 
 ## Implementations
 
