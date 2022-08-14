@@ -17,7 +17,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 It is expected that software will allow users to define object links using some kind of microsyntax, similar to `@mention` and `#hashtag` microsyntaxes. The exact way of defining object links may vary depending on the use case and is out of scope of this document.
 
-If object's content has links to other objects, that object MAY have the `tag` property, where each link is represented as a `Link` object, as suggested by [Activity Vocabulary]. The properties of this `Link` object are:
+If an object's `name`, `summary`, or `content` has qualified links to other objects, that object SHOULD have the `tag` property, where each object link is represented as a `Link` object, as suggested by [Activity Vocabulary]. The properties of this `Link` object are:
 
 - `type` (REQUIRED): the type MUST be `Link`.
 - `mediaType` (REQUIRED): the media type SHOULD be `application/activity+json`.
