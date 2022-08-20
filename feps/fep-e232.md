@@ -30,13 +30,14 @@ Example:
 ```json
 {
     "type": "Note",
-    "content: "This is a quote:<br>RE: https://example.com/objects/123",
+    "content": "This is a quote:<br>RE: https://example.com/objects/123",
     "tag": [
         {
             "type": "Link",
-            "mediaType": "application/activity+json",
+            "mediaType": "application/ld+json; profile=\"https://www.w3.org/ns/activitystreams\"",
             "href": "https://example.com/objects/123",
-            "name": "RE: https://example.com/objects/123"
+            "name": "RE: https://example.com/objects/123",
+            "rel": "https://www.w3.org/ns/activitystreams"
         }
     ]
 }
