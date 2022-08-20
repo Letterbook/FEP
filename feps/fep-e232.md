@@ -19,10 +19,11 @@ It is expected that software will allow users to define object links using some 
 
 If an object's `name`, `summary`, or `content` has qualified links to other objects, that object SHOULD have the `tag` property, where each object link is represented as a `Link` object, as suggested by [Activity Vocabulary]. The properties of this `Link` object are:
 
-- `type` (REQUIRED): the type MUST be `Link`.
-- `mediaType` (REQUIRED): the media type SHOULD be `application/activity+json`.
+- `type` (REQUIRED): the type MUST be `Link` or a subtype.
+- `mediaType` (REQUIRED): the media type MUST be `application/ld+json; profile="https://www.w3.org/ns/activitystreams"`. This specification only deals with ActivityPub objects but in practice the media type can be different and servers MAY accept object links which do not comply with the requirement.
 - `href` (REQUIRED): the href property MUST contain the URI of the referenced object.
 - `name` (OPTIONAL): the `name` SHOULD match the microsyntax used in object's content.
+- `rel` (OPTIONAL): if relevant, the `rel` SHOULD specify how the link is related to the current resource. Using `rel` can provide additional purpose to object links by signaling specific intended use-cases.
 
 Example:
 
@@ -41,7 +42,7 @@ Example:
 }
 ```
 
-Note that the `content` still includes the `RE: <url>` microsyntax but consuming implementations are not required to parse that in order to make the appropriate associations.
+Note that the `content` includes the `RE: <url>` microsyntax but consuming implementations are not required to parse that in order to make the appropriate associations.
 
 ## Implementations
 
