@@ -1,5 +1,7 @@
 ---
 authors: Felix Ableitner <me@nutomic.com>
+status: DRAFT
+dateReceived: 2022-11-12
 ---
 # FEP-1b12: Group federation
 
