@@ -60,6 +60,8 @@ Following metadata key-value pairs may be placed at the top of a proposal:
 - `dateWithdrawn`: Date of when the proposal status was set to `WITHDRAWN` (only for proposals with status `WITHDRAWN`).
 - `dateFinalized`: Date of when the proposal status was set to `FINAL` (only for proposals with status `FINAL`).
 - `relatedFeps`: A comma separated list of related FEPs (e.g. `FEP-a4ed, FEP-141a, FEP-686f`).
+- `replaces`: A comma separated list of FEPs that are replaced by the proposal.
+- `replacedBy`: Identifier of a FEP that replaces the proposal.
 
 Future FEPs may specify additional metadata fields.
 
@@ -107,8 +109,11 @@ Fediverse Enhancement Proposals must be placed in the public domain by the autho
 5. After at least 60 days the authors may request the proposal to be finalized. This is done by requesting final comments on the proposal.
    - If there are no community objections within 14 days and the authors can show that they have initiated sufficient awareness and discussion of the proposal, an editor will set the status of the submission to `FINAL`.
 6. If after 120 days the authors have not requested the proposal to be finalized or there is no community consensus, an editor will set the status of the submission to `WITHDRAWN`.
-7. A proposal with status `FINAL` can not be changed or updated.
-8. A proposal with status `WITHDRAWN` remains in the repository and can be resubmitted.
+7. A proposal with status `FINAL` can not be changed or updated in a way that would lead to adjustments to implementations. Minor corrections are allowed.
+8. Any substantial change to finalized proposal must be submitted as a separate FEP.
+  - The new FEP MUST include a `replaces` metadata attribute pointing to FEPs it supersedes.
+  - If the new FEP becomes `FINAL`, the original one MUST point to it in an added `replacedBy` metadata attribute.
+9. A proposal with status `WITHDRAWN` remains in the repository and can be resubmitted.
 
 ### Editors
 
@@ -117,6 +122,10 @@ A list of editors is maintained in the `EDITORS.md` file at the root of the FEP 
 ### Submission Methods
 
 A list of methods in which a proposal may be submitted is maintained in the `SUBMISSION.md` file at the root of the FEP repository.
+
+### FEP-a4ed
+
+FEP-a4ed (The Fediverse Enhancement Proposal Process) is a living document and can be updated despite having the `FINAL` status.
 
 ## History
 
