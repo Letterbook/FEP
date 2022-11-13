@@ -14,8 +14,8 @@ A Fediverse Enhancement Proposal (FEP) is a document that provides information t
 | [FEP-8fcf: Followers collection synchronization across servers](./feps/fep-8fcf.md) | `FINAL` | [#6](https://codeberg.org/fediverse/fep/issues/6) [#11](https://git.activitypub.dev/ActivityPubDev/Fediverse-Enhancement-Proposals/issues/11) | 2020-10-24     | 2022-02-07                                    |
 | [FEP-f1d5: NodeInfo in Fediverse Software](./feps/fep-f1d5.md)                      | `DRAFT` | [#12](https://git.activitypub.dev/ActivityPubDev/Fediverse-Enhancement-Proposals/issues/12) | 2020-12-13     | -                                    |
 | [FEP-400e: Publicly-appendable ActivityPub collections](./feps/fep-400e.md)         | `FINAL` | [#5](https://codeberg.org/fediverse/fep/issues/5)                                       | 2021-02-16     | 2020-02-04                           |
-| [FEP-8c3f.md: Web Monetization](./feps/fep-8c3f.md) | `DRAFT` | [#3](https://codeberg.org/fediverse/fep/issues/3) | 2022-01-18     | -                                    |
-| [FEP-e232: Object Links](./feps/fep-e232.md) | `DRAFT` | [#14](https://codeberg.org/fediverse/fep/issues/14) | 2022-08-01 | 2022-12-01 |
+| [FEP-8c3f: Web Monetization](./feps/fep-8c3f.md) | `DRAFT` | [#3](https://codeberg.org/fediverse/fep/issues/3) | 2022-01-18     | -                                    |
+| [FEP-e232: Object Links](./feps/fep-e232.md) | `DRAFT` | [#14](https://codeberg.org/fediverse/fep/issues/14) | 2022-08-01 | - |
 | [FEP-5624: Per-object reply control policies](./feps/fep-5624.md) | `DRAFT` | [#18](https://codeberg.org/fediverse/fep/issues/18) | 2022-08-23 | - |
 | [FEP-1b12: Group federation](./feps/fep-1b12.md) | `DRAFT` | [#22](https://codeberg.org/fediverse/fep/issues/22) | 2022-11-12 | - |
 
