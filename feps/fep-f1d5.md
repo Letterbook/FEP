@@ -1,6 +1,6 @@
 ---
 authors: CJ <cjslep@gmail.com>
-status: DRAFT
+status: WITHDRAWN
 dateReceived: 2020-12-13
 ---
 # FEP-f1d5: NodeInfo in Fediverse Software
