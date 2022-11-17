@@ -36,7 +36,7 @@ Private groups likely require a different mechanism to add followers, which is y
 
 Every activity and object which gets published in a community MUST specify the group actor identifier in the `audience` field.
 
-Example of a `Create/Note` activity:
+Example of a `Create/Page` activity:
 
 ```
 {
@@ -46,19 +46,50 @@ Example of a `Create/Note` activity:
   "actor": "https://sally.example.org",
   "audience": "https://example.com/my-forum",
   "object": {
-    "type": "Note",
-    "id": "https://sally.example.org/n/1",
+    "type": "Page",
+    "id": "https://sally.example.org/p/1",
+    "attributedTo": "https://sally.example.org",
     "content": "Hello",
     "audience": "https://example.org/my-forum"
   }
 }
 ```
 
-Actors can send such an activity to the group inbox for publishing. 
+Actors can send such an activity to the group inbox for publishing.
+
+
+## Threads and comments
+
+Each `Group` actor represents a single forum. Each forum usually contains many user-submitted threads, which can be represented as `Page` objects. Forums can have comments which are usually represented as `Note`, and contain a field `inReplyTo` linking the thread it belongs to. Object representations may differ based on the requirements of each application.
+
+A thread:
+```
+{
+    "type": "Page",
+    "id": "https://sally.example.org/p/1",
+    "attributedTo": "https://sally.example.org",
+    "name": "Hello forum!",
+    "audience": "https://example.org/my-forum"
+}
+```
+
+A comment in that thread:
+```
+{
+    "type": "Note",
+    "id": "https://sally.example.org/p/3",
+    "attributedTo": "https://sally.example.org",
+    "inReplyTo": "https://sally.example.org/p/1",
+    "content": "My first comment",
+    "audience": "https://example.org/my-forum"
+}
+```
+
+Groups MAY expose a collection of all threads, and a collection for each thread which contains all comments.
 
 ## The Announce activity
 
-The main task of a group is to distribute content among its followers. 
+The main task of a group is to distribute content among its followers.
 
 When a group receives a activity in its inbox, it SHOULD perform some automatic validation, such as checking for domain and user blocks. Groups MAY require additional validation, such as accepting content only from followers, or even manual approval from group moderators. In case an activity fails these checks, the group MAY respond to the sender with a `Reject` activity.
 
@@ -77,31 +108,33 @@ In case the incoming activity is valid, the group MUST wrap it in an `Announce` 
     "actor": "https://sally.example.org",
     "audience": "https://example.org/my-forum",
     "object": {
-      "type": "Note",
-      "id": "https://sally.example.org/n/1",
-      "content": "Hello",
+      "type": "Page",
+      "id": "https://sally.example.org/p/1",
+      "content": "Hello forum!",
       "audience": "https://example.org/my-forum"
     }
   }
 }
 ```
 
-Implementations SHOULD ensure that activities wrapped in this way keep all their original data. In particular, software may include nonstandard fields on the `Note` object it sends. These extra fields should be kept intact by the group actor even if it cannot parse them, for the benefit of followers which use the same software. 
+Implementations SHOULD ensure that activities wrapped in this way keep all their original data. In particular, software may include nonstandard fields on objects it sends. These extra fields should be kept intact by the group actor even if it cannot parse them, for the benefit of followers which use the same software.
 
 After the group successfully verifies and wraps the received activity, it sends it to the inboxes of all group followers. Followers then use the outer `Announce` activity to determine that the content was really approved by the group. After this step the `Announce` can be discarded and only the inner activity shown to users.
 
-This mechanism can be used to publish any possible activity type. Examples include `Announce/Like`, `Announce/Delete/Note` or `Announce/Undo/Like`. Group implementations SHOULD NOT announce activity types which they are unable to parse and verify, because these might be interpreted in unexpected ways by other platforms whose users follow the group. For example if a group implementation does not support `Block` activities, it should never forward an `Announce/Block` activity to its followers, because it might be invalid or malicious. Similarly, incoming `Announce` activities should be rejected by the group.
+This mechanism can be used to publish any possible activity type. Examples include `Announce/Like`, `Announce/Delete/Note` or `Announce/Undo/Like`. Some activity types are reserved for moderation, and SHOULD NOT be announced, unless the group has verified that it was sent by a group moderator. These reserved activities are `Block`, `Delete`, `Ignore`, `Move`, `Remove`, `Undo/Block`, `Undo/Delete`, `Undo/Ignore`, `Undo/Move`, `Undo/Remove`. Other activity types which are meant to be private MUST NOT be announced in any case: `Follow`, `Accept`,  `Join`, `Leave`.
+
+Announced activities SHOULD also get added to the group outbox. If the group exposes collections of threads and comments, relevant items should also be added to them.
 
 ## Group moderation
 
-Group moderators are those actors who control the group, are able to change its metadata and remove malicious content. They are listed in the group's `moderators` collection:
+Group moderators are those actors who control the group, are able to change its metadata and remove malicious content. They are listed in the group's `attributedTo` collection:
 
 ```
 {
   "id": "https://example.org/my-forum",
   "type": "Group",
   "name": "Ten Forward",
-  "moderators": "https://example.org/my-forum/moderators",
+  "attributedTo": "https://example.org/my-forum/moderators",
 }
 ```
 
@@ -116,7 +149,7 @@ Group moderators are those actors who control the group, are able to change its 
 }
 ```
 
-Group moderators can be changed with `Add` and `Remove` activities. These are only valid if they are announced by the group according to its verification criteria. 
+Group moderators can be changed with `Add` and `Remove` activities. These are only valid if they are announced by the group according to its verification criteria.
 
 ```
 {
@@ -150,6 +183,6 @@ The `audience` field and private groups are not yet implemented. Description of 
 
 ## Copyright
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication 
+CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
 
 To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
