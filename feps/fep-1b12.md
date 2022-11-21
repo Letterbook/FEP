@@ -85,7 +85,9 @@ A comment in that thread:
 }
 ```
 
-Groups MAY expose a collection of all threads, and a collection for each thread which contains all comments.
+There are reference links provided for navigating up from a comment to the respective thread and group. Comments MUST provide a field `inReplyTo` linking to the thread they belong to. As mentioned before, both threads and comments MUST include a field `audience`, which allows resolving the group they belong to.
+
+To navigate down from a group to threads and comments, implementations MAY expose them as collections. Groups MAY have a `replies` collection which contains all posts. Each post MAY again have a `replies` collection which lists all comments responding to the thread.
 
 ## The Announce activity
 
@@ -117,18 +119,19 @@ In case the incoming activity is valid, the group MUST wrap it in an `Announce` 
 }
 ```
 
-Implementations SHOULD ensure that activities wrapped in this way keep all their original data. In particular, software may include nonstandard fields on objects it sends. These extra fields should be kept intact by the group actor even if it cannot parse them, for the benefit of followers which use the same software.
+When wrapping activities in this way, implementations SHOULD NOT make any changes to the wrapped activity, but preserve it exactly. This ensures that activities can be verified with [Object Integrity Proofs].
 
 After the group successfully verifies and wraps the received activity, it sends it to the inboxes of all group followers. Followers then use the outer `Announce` activity to determine that the content was really approved by the group. After this step the `Announce` can be discarded and only the inner activity shown to users.
 
-This mechanism can be used to publish any possible activity type. Examples include `Announce/Like`, `Announce/Delete/Note` or `Announce/Undo/Like`. Some activity types are reserved for moderation, and SHOULD NOT be announced, unless the group has verified that it was sent by a group moderator. These reserved activities are `Block`, `Delete`, `Ignore`, `Move`, `Remove`, `Undo/Block`, `Undo/Delete`, `Undo/Ignore`, `Undo/Move`, `Undo/Remove`. Other activity types which are meant to be private MUST NOT be announced in any case: `Follow`, `Accept`,  `Join`, `Leave`.
+This mechanism can be used to publish any possible activity type. Examples include `Announce/Like`, `Announce/Delete/Note` or `Announce/Undo/Like`.
 
 Announced activities SHOULD also get added to the group outbox. If the group exposes collections of threads and comments, relevant items should also be added to them.
 
 ## Group moderation
 
-Group moderators are those actors who control the group, are able to change its metadata and remove malicious content. They are listed in the group's `attributedTo` collection:
+Moderators are responsible for the content which gets published in a group. As such they have some special powers, such as viewing reports received by the group or banning users, among others. Moderation is an optional feature, implementations can safely ignore this entire section.
 
+Groups list their moderators in a collection which is linked from the `attributedTo` field:
 ```
 {
   "id": "https://example.org/my-forum",
@@ -149,7 +152,7 @@ Group moderators are those actors who control the group, are able to change its 
 }
 ```
 
-Group moderators can be changed with `Add` and `Remove` activities. These are only valid if they are announced by the group according to its verification criteria.
+Group moderators can be changed with `Add` and `Remove` activities:
 
 ```
 {
@@ -168,7 +171,11 @@ Group moderators can be changed with `Add` and `Remove` activities. These are on
 }
 ```
 
-Moderators are responsible for the content which gets published in a community. As such they have the power to view reports received by the group (`Flag`), delete malicious posts (`Announce/Delete`), or ban users (`Announce/Block`).
+The actions which can be done by moderators are called moderation activities. These are implementation specific, examples include `Add`, `Remove` (to change the moderators collection), `Block` (ban malicious users) and `Update/Group` (change group metadata).
+
+If an group or group follower supports moderation, it MUST validate incoming moderation activities before further processing. Such activities MUST have an actor who is listed in `attributedTo`. Group followers MUST additionally verify that the moderation activity was announced by the group.
+
+Implementations MAY also have site administrators which are listed in the site actor's `attributedTo` field. They are essentially moderators who have control over all groups on their instance. Verification works in the same way as group moderators, namely checking the actor against `attributedTo`, and checking that the activity was announced by the group.
 
 ## Implementations
 
@@ -180,6 +187,7 @@ The `audience` field and private groups are not yet implemented. Description of 
 
 - [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html)
 - [Activity Vocabulary], James M Snell, Evan Prodromou, [Activity Vocabulary](https://www.w3.org/TR/activitystreams-vocabulary/)
+- [Object Integrity Proofs] silverpill, [FEP-8b32: Object Integrity Proofs](https://codeberg.org/fediverse/fep/src/branch/main/feps/fep-8b32.md)
 
 ## Copyright
 
