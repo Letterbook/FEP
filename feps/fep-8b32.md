@@ -2,6 +2,7 @@
 authors: silverpill <silverpill@firemail.cc>
 status: DRAFT
 dateReceived: 2022-11-12
+discussionsTo: https://codeberg.org/fediverse/fep/issues/29
 ---
 # FEP-8b32: Object Integrity Proofs
 
@@ -25,13 +26,17 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 The proposed authentication mechanism is based on [Data Integrity](https://w3c.github.io/vc-data-integrity/) specification.
 
+### Proof generation
+
+The proof MUST be created according to the *Data Integrity* specification, section [4.1 Generate Proof](https://w3c.github.io/vc-data-integrity/#generate-proof).
+
 The process of proof generation consists of the following steps:
 
 - **Canonicalization** is a transformation of a JSON object into the form suitable for hashing, according to some deterministic algorithm.
 - **Hashing** is a process that calculates an identifier for the transformed data using a cryptographic hash function.
 - **Signing** is a process that calculates a value that protects the integrity of the input data from modification.
 
-The constructed proof then MUST be inserted into the original JSON object. The object MAY contain multiple proofs.
+The resulting proof is added to the original JSON object under the key `proof`. Objects MAY contain multiple proofs.
 
 Example of unsigned activity:
 
@@ -66,18 +71,20 @@ Example of activity with integrity proof:
         "created": "2022-11-12T00:00:00Z",
         "verificationMethod": "https://example.com/users/alice#main-key",
         "proofPurpose": "assertionMethod",
-        "proofValue": "mWd5S+XKLZgt1+6uqyixeFvkGm..."
+        "proofValue": "z2xZFiRJrr859BvmK22hS47448J..."
     }
 }
 ```
 
-The list of attributes used in integrity proof is defined in Data Integrity specification, section [2.1 Proofs](https://w3c.github.io/vc-data-integrity/#proofs). The value of `verificationMethod` attribute SHOULD be an URL of actor's public key or a [DID](https://www.w3.org/TR/did-core/) associated with an actor.
+The list of attributes used in integrity proof is defined in *Data Integrity* specification, section [2.1 Proofs](https://w3c.github.io/vc-data-integrity/#proofs). The value of `verificationMethod` attribute SHOULD be an URL of actor's public key or a [DID](https://www.w3.org/TR/did-core/) associated with an actor.
 
-The recipient of activity SHOULD perform proof verification if it contains integrity proofs. Verification process starts with the removal of a proof from the JSON object. Then the object is canonicalized, hashed and signature verification is performed according to the parameters specified in the proof.
+### Proof verification
+
+The recipient of activity SHOULD perform proof verification if it contains integrity proofs. Verification process MUST follow the *Data Integrity* specification, section [4.2 Verify Proof](https://w3c.github.io/vc-data-integrity/#verify-proof). It starts with the removal of a `proof` value from the JSON object. Then the object is canonicalized, hashed and signature verification is performed according to the parameters specified in the proof.
 
 If both HTTP signature and integrity proof are used, the integrity proof MUST be given precedence over HTTP signature. The HTTP signature MAY be dismissed.
 
-## Algorithms
+### Algorithms
 
 Implementors SHOULD pursue broad interoperability when choosing algorithms for integrity proofs. These algorithms are RECOMMENDED:
 
