@@ -8,7 +8,7 @@ dateReceived: 2022-11-12
 
 ## Summary
 
-Internet forums are probably the oldest form of social media. This document describes how they can be implemented with the ActivityPub protocol.
+Internet forums are probably the oldest form of social media. They can be implemented with the Activitypub protocol, but such implementations may not necessarily be compatible with each other. This document defines a common subset of Activitypub which is used by different platforms to federate groups in a mutually compatible way.
 
 ## History
 
@@ -87,13 +87,13 @@ A comment in that thread:
 
 There are reference links provided for navigating up from a comment to the respective thread and group. Comments MUST provide a field `inReplyTo` linking to the thread they belong to. As mentioned before, both threads and comments MUST include a field `audience`, which allows resolving the group they belong to.
 
-To navigate down from a group to threads and comments, implementations MAY expose them as collections. Groups MAY have a `replies` collection which contains all posts. Each post MAY again have a `replies` collection which lists all comments responding to the thread.
+To navigate down from a group to threads and comments, implementations MAY expose them as collections. Groups MAY have a `replies` collection which contains all threads. Each thread MAY again have a `replies` collection which lists all comments responding to the thread.
 
 ## The Announce activity
 
 The main task of a group is to distribute content among its followers.
 
-When a group receives a activity in its inbox, it SHOULD perform some automatic validation, such as checking for domain and user blocks. Groups MAY require additional validation, such as accepting content only from followers, or even manual approval from group moderators. In case an activity fails these checks, the group MAY respond to the sender with a `Reject` activity.
+When a group receives a activity in its inbox, it SHOULD perform some automatic validation, such as checking for domain and user blocks. Groups MAY require additional validation, such as accepting content only from followers, or even manual approval from group moderators. In case an activity fails these checks, the group MAY respond to the sender with a `Reject` activity. Groups MUST NOT forward any activities that do not have an audience which includes the group actor identifier.
 
 In case the incoming activity is valid, the group MUST wrap it in an `Announce` activity, with the original activity as object:
 
@@ -123,15 +123,14 @@ When wrapping activities in this way, implementations SHOULD NOT make any change
 
 After the group successfully verifies and wraps the received activity, it sends it to the inboxes of all group followers. Followers then use the outer `Announce` activity to determine that the content was really approved by the group. After this step the `Announce` can be discarded and only the inner activity shown to users.
 
-This mechanism can be used to publish any possible activity type. Examples include `Announce/Like`, `Announce/Delete/Note` or `Announce/Undo/Like`.
+This mechanism can be used to publish any possible activity type. Examples include `Announce/Like`, `Announce/Delete/Note` or `Announce/Undo/Like`. Implementations may choose not to Announce some activities. For example, certain activities may represent implementation-specific private actions.
 
 Announced activities SHOULD also get added to the group outbox. If the group exposes collections of threads and comments, relevant items should also be added to them.
 
 ## Group moderation
 
-Moderators are responsible for the content which gets published in a group. As such they have some special powers, such as viewing reports received by the group or banning users, among others. Moderation is an optional feature, implementations can safely ignore this entire section.
+Group moderators are those actors who control the group, are able to change its metadata and remove malicious content. They are listed in the group’s `attributedTo` collection. Moderation is an optional feature, implementations can safely ignore this entire section.
 
-Groups list their moderators in a collection which is linked from the `attributedTo` field:
 ```
 {
   "id": "https://example.org/my-forum",
