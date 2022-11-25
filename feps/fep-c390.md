@@ -2,6 +2,7 @@
 authors: silverpill <silverpill@firemail.cc>
 status: DRAFT
 dateReceived: 2022-11-23
+discussionsTo: https://codeberg.org/fediverse/fep/issues/34
 ---
 # FEP-c390: Identity Proofs
 
@@ -39,7 +40,15 @@ Example:
 
 ```json
 {
-    "@context": "https://www.w3.org/ns/activitystreams",
+    "@context": [
+        "https://www.w3.org/ns/activitystreams",
+        "https://www.w3.org/ns/did/v1",
+        "https://w3id.org/security/data-integrity/v1",
+        {
+            "fep": "https://codeberg.org/fediverse/fep#",
+            "Identity": "fep:Identity"
+        }
+    ],
     "type": "Person",
     "id": "https://example.com/users/alice",
     "inbox": "https://example.com/users/alice/inbox",
