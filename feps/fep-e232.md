@@ -2,6 +2,7 @@
 authors: silverpill <silverpill@firemail.cc>
 status: DRAFT
 dateReceived: 2022-08-01
+discussionsTo: https://codeberg.org/fediverse/fep/issues/14
 ---
 # FEP-e232: Object Links
 
@@ -29,6 +30,7 @@ Example:
 
 ```json
 {
+    "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Note",
     "content": "This is a quote:<br>RE: https://example.com/objects/123",
     "tag": [
