@@ -60,7 +60,7 @@ Actors can send such an activity to the group inbox for publishing.
 
 ## Threads and comments
 
-Each `Group` actor represents a single forum. Each forum usually contains many user-submitted threads, which can be represented as `Page` objects. Forums can have comments which are usually represented as `Note`, and contain a field `inReplyTo` linking the thread it belongs to. Object representations may differ based on the requirements of each application.
+Each `Group` actor represents a single forum. Each forum usually contains many user-submitted threads, which can be represented as `Page` objects. Forums can have comments which are usually represented as `Note`, and contain a field `inReplyTo` linking the thread it belongs to. Object representations and types may differ based on the requirements of each application.
 
 A thread:
 ```
@@ -85,7 +85,9 @@ A comment in that thread:
 }
 ```
 
-There are reference links provided for navigating up from a comment to the respective thread and group. Comments MUST provide a field `inReplyTo` linking to the thread they belong to. As mentioned before, both threads and comments MUST include a field `audience`, which allows resolving the group they belong to.
+There are reference links provided for navigating up from a comment to the respective thread and group. Comments MUST provide a field `inReplyTo` linking to the thread they belong to, or to the parent comment in case of a nested reply. As mentioned before, both threads and comments MUST include a field `audience`, which allows resolving the group they belong to.
+
+Implementations MAY use the `context` field to reference the corresponding thread, as well as other comments or activities in the thread.
 
 To navigate down from a group to threads and comments, implementations MAY expose them as collections. Groups MAY have a `replies` collection which contains all threads. Each thread MAY again have a `replies` collection which lists all comments responding to the thread.
 
