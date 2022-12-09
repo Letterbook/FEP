@@ -107,7 +107,7 @@ Fediverse Enhancement Proposals must be placed in the public domain by the autho
    - Authors may withdraw the submission upon which an editor will set the status of the submission to `WITHDRAWN`.
 5. After at least 60 days the authors may request the proposal to be finalized. This is done by requesting final comments on the proposal.
    - If there are no community objections within 14 days and the authors can show that they have initiated sufficient awareness and discussion of the proposal, an editor will set the status of the submission to `FINAL`.
-6. If after 120 days the authors have not requested the proposal to be finalized or there is no community consensus, an editor will set the status of the submission to `WITHDRAWN`.
+6. If after 1 year the authors have not requested the proposal to be finalized, an editor should inquire about the status of the proposal. If authors don't respond, an editor will set the status of the submission to `WITHDRAWN`.
 7. A proposal with status `FINAL` can not be changed or updated in a way that would lead to adjustments to implementations. Minor corrections are allowed.
 8. Any substantial change to finalized proposal must be submitted as a separate FEP.
   - The new FEP MUST include a `replaces` metadata attribute pointing to FEPs it supersedes.
