@@ -45,7 +45,7 @@ After some transitional period, implementations may wish to simplify their logic
 
 ## References
 
-- [ActivityPub] Christopher Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
+- [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [1] Gargron, [Add bio fields (#6645)](https://github.com/mastodon/mastodon/pull/6645)
 - [2] mei23, [Show user fields (#3590)](https://github.com/misskey-dev/misskey/pull/3590)
 - [3] minibikini, [Add custom profile fields (!1488)](https://git.pleroma.social/pleroma/pleroma/-/merge_requests/1488)

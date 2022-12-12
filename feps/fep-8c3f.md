@@ -63,7 +63,7 @@ and it consists on a [payment pointer](https://paymentpointers.org/#syntax/).
 
 ## References
 
-- [ActivityPub] Christopher Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
+- [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [Web Monetization] Adrian Hope-Bailie, Ben Sharafian, Nick Dudfield, [Web Monetization](https://webmonetization.org/), 2021
 
 
