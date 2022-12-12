@@ -116,7 +116,7 @@ This list is not comprehensive:
 
 ## References
 
-- [ActivityPub] Christopher Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
+- [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [NodeInfoRepository] Jonne Haß, [jhass/nodeinfo](https://github.com/jhass/nodeinfo), 2014
 - [NodeInfo2Repository] Jason Robinson, [jaywink/nodeinfo2](https://github.com/jaywink/nodeinfo2), 2016
 - [ServiceInfo] Jason Robinson, [ServiceInfo - specification for service metadata](https://talk.feneas.org/t/serviceinfo-specification-for-service-metadata/99), 2019
