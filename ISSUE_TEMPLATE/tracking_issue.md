@@ -12,5 +12,5 @@ Please post links to relevant discussions as comment to this issue.
 
 `dateReceived`: [DATE-RECEIVED]
 
-If no further actions are taken, the proposal will be automatically set to `WITHDRAWN` on [DATE-RECEIVED+120-DAYS] (in 120 days).
+If no further actions are taken, the proposal may be set by editors to `WITHDRAWN` on [DATE-RECEIVED+1-YEAR] (in 1 year).
 
