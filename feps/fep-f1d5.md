@@ -1,6 +1,6 @@
 ---
-authors: CJ <cjslep@gmail.com>
-status: WITHDRAWN
+authors: CJ <cjslep@gmail.com>, silverpill <silverpill@firemail.cc>
+status: DRAFT
 dateReceived: 2020-12-13
 ---
 # FEP-f1d5: NodeInfo in Fediverse Software
@@ -21,9 +21,9 @@ protocols it encapsulated include diaspora, pumpio, and gnusocial.
 The NodeInfo specification is incredibly strict in its schema, often requiring
 regex-validation and a closed set of enumerated possible values. As an objection
 to this, the NodeInfo2 fork was created as a form of criticism by removing some
-validation of fields and with some logical restructuring of the metadata
-[ServiceInfo]. Building off of NodeInfo and NodeInfo2, ServiceInfo was briefly
-explored [ServiceInfoRepository].
+validation of fields and with some logical restructuring of the metadata.
+Building off of NodeInfo and NodeInfo2, ServiceInfo was briefly
+explored [ServiceInfo].
 
 This FEP does **not** attempt to document the specific protocol details. For
 that, see the [NodeInfoRepository] and [NodeInfo2Repository]. It attempts to
@@ -66,7 +66,7 @@ prescriptive:
   running software. It is unclear how to count `total` users when user identity
   is: spread across multiple servers, spread across multiple groups, or present
   within multiple collections of users. Multiple software instances could each
-  have a resonable claim to counting the user as "using" their software, which
+  have a reasonable claim to counting the user as "using" their software, which
   globally results users being counted more than once.
 * The `usage.users` activity counts likewise assume that user identity is tied
   to a specific instance of running software. For the same reasons above, where
@@ -111,7 +111,6 @@ This list is not comprehensive:
 ### Clients
 
 * [The-Federation.Info](https://the-federation.info/)
-* [Pod Uptime](https://podupti.me/)
 * [Hello Matrix Public Servers](https://www.hello-matrix.net/public_servers.php)
 
 ## References
@@ -119,8 +118,7 @@ This list is not comprehensive:
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [NodeInfoRepository] Jonne Haß, [jhass/nodeinfo](https://github.com/jhass/nodeinfo), 2014
 - [NodeInfo2Repository] Jason Robinson, [jaywink/nodeinfo2](https://github.com/jaywink/nodeinfo2), 2016
-- [ServiceInfo] Jason Robinson, [ServiceInfo - specification for service metadata](https://talk.feneas.org/t/serviceinfo-specification-for-service-metadata/99), 2019
-- [ServiceInfoRepository] Jason Robinson, [feneas/serviceinfo](https://git.feneas.org/feneas/serviceinfo), 2019
+- [ServiceInfo] Jason Robinson, [ServiceInfo - specification for service metadata](https://web.archive.org/web/20220201002230/https://talk.feneas.org/t/serviceinfo-specification-for-service-metadata/99), 2019
 - [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html), 1997
 
 ## Copyright
