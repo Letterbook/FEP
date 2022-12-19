@@ -113,6 +113,7 @@ Fediverse Enhancement Proposals must be placed in the public domain by the autho
   - The new FEP MUST include a `replaces` metadata attribute pointing to FEPs it supersedes.
   - If the new FEP becomes `FINAL`, the original one MUST point to it in an added `replacedBy` metadata attribute.
 9. A proposal with status `WITHDRAWN` remains in the repository and can be resubmitted.
+10. After a proposal becomes `FINAL` an editor will archive all discussions linked in the tracking issue and add the resulting archive links to the tracking issue.
 
 ### Editors
 
