@@ -2,6 +2,7 @@
 authors: CJ <cjslep@gmail.com>, silverpill <silverpill@firemail.cc>
 status: DRAFT
 dateReceived: 2020-12-13
+discussionsTo: https://codeberg.org/fediverse/fep/issues/50
 ---
 # FEP-f1d5: NodeInfo in Fediverse Software
 
