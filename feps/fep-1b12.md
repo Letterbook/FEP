@@ -73,7 +73,7 @@ The properties `inReplyTo` and `audience` can be used to navigate up from a repl
 
 The main task of a group is to distribute content among its followers.
 
-When a group receives a activity in its inbox, it SHOULD perform some automatic validation, such as checking for domain and user blocks. Groups MAY require additional validation, such as accepting content only from followers, or even manual approval from group moderators. In case an activity fails these checks, the group MAY respond to the sender with a `Reject` activity. Groups MUST discard any activities which do not include the group identifier in the `audience` field.
+When a group receives a activity in its inbox, it SHOULD perform some automatic validation, such as checking for domain and user blocks. Groups MAY require additional validation, such as accepting content only from followers, or even manual approval from group moderators. In case an activity fails these checks, the group MAY respond to the sender with a `Reject` activity.
 
 In case the incoming activity is deemed valid, the group MUST wrap it in an `Announce` activity, with the original activity as object. The wrapped activity MUST be preserved exactly as it was received, without changing or removing any properties. This ensures that forwarded activities can be verified with [Object Integrity Proofs]. Announce activities SHOULD get added to the group outbox. If the group exposes collections of threads and comments, relevant items should also be added to them.
 
@@ -106,7 +106,7 @@ This mechanism can be used to publish any possible activity type. Examples inclu
 
 ## Group moderation
 
-Group moderators are those actors who control the group, are able to change its metadata and remove malicious content. They are listed in the group’s `attributedTo` collection. Moderation is an optional feature, implementations can safely ignore this entire section.
+Group moderators are those actors who control the group, are able to change its metadata and remove malicious content. They are listed in the group’s `attributedTo` collection. Moderation is an optional feature, implementations can safely ignore this entire section. At the moment it is only implemented by Lemmy.
 
 ```
 {
@@ -151,7 +151,7 @@ The actions which can be done by moderators are called moderation activities. Th
 
 If an group or group follower supports moderation, it MUST validate incoming moderation activities before further processing. Such activities MUST have an actor who is listed in `attributedTo`. Group followers MUST additionally verify that the moderation activity was announced by the group.
 
-Implementations SHOULD also accept moderation activities which come from the same instance where the community is hosted, under the assumption that these are sent by instance administrators. These moderation activities also need to be wrapped in `Announce` by the group.
+Implementations SHOULD also accept moderation activities which come from the same server where the community is hosted, under the assumption that these are sent by server administrators. These moderation activities also need to be wrapped in `Announce` by the group.
 
 ## Implementations
 
