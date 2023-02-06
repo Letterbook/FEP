@@ -16,7 +16,7 @@ Integrity proofs are sets of attributes that represent digital signatures and pa
 
 ## History
 
-Mastodon implemented embedded signatures according to [Linked Data Signatures 1.0](https://github.com/w3c-ccg/ld-signatures/) specification, which is now obsolete.
+Mastodon supports Linked Data signatures [since 2017](https://github.com/mastodon/mastodon/pull/4687), and a number of other platforms added support for them later. These signatures are similar to integrity proofs, but are based on outdated [Linked Data Signatures 1.0](https://github.com/w3c-ccg/ld-signatures/) specification, which has been superseded by other standards.
 
 ## Requirements
 
@@ -34,7 +34,7 @@ The process of proof generation consists of the following steps:
 
 - **Canonicalization** is a transformation of a JSON object into the form suitable for hashing, according to some deterministic algorithm.
 - **Hashing** is a process that calculates an identifier for the transformed data using a cryptographic hash function.
-- **Signing** is a process that calculates a value that protects the integrity of the input data from modification.
+- **Signature generation** is a process that calculates a value that protects the integrity of the input data from modification.
 
 The resulting proof is added to the original JSON object under the key `proof`. Objects MAY contain multiple proofs.
 
@@ -42,7 +42,10 @@ Example of unsigned activity:
 
 ```json
 {
-    "@context": "https://www.w3.org/ns/activitystreams",
+    "@context": [
+        "https://www.w3.org/ns/activitystreams",
+        "https://w3id.org/security/data-integrity/v1"
+    ],
     "type": "Create",
     "actor": "https://example.com/users/alice",
     "object": {
@@ -92,9 +95,13 @@ Implementors SHOULD pursue broad interoperability when choosing algorithms for i
 - Hashing: SHA-256
 - Signatures: RSASSA-PKCS1-v1_5
 
+### Backwards compatibility
+
+Integrity proofs and Linked Data signatures can be used together, as they rely on different properties (`proof` and `signature`, respectively).
+
 ## Implementations
 
-TBD
+- [Mitra](https://codeberg.org/silverpill/mitra/src/tag/v1.13.0/FEDERATION.md#object-integrity-proofs)
 
 ## References
 
