@@ -18,7 +18,7 @@ A Fediverse Enhancement Proposal (FEP) is a document that provides information t
 | [FEP-2100: Unbound Group and Organization](./feps/fep-2100.md) | `DRAFT` | [#36](https://codeberg.org/fediverse/fep/issues/36) | 2022-03-31 | - |
 | [FEP-e232: Object Links](./feps/fep-e232.md) | `DRAFT` | [#14](https://codeberg.org/fediverse/fep/issues/14) | 2022-08-01 | - |
 | [FEP-5624: Per-object reply control policies](./feps/fep-5624.md) | `DRAFT` | [#18](https://codeberg.org/fediverse/fep/issues/18) | 2022-08-23 | - |
-| [FEP-1b12: Group federation](./feps/fep-1b12.md) | `DRAFT` | [#22](https://codeberg.org/fediverse/fep/issues/22) | 2022-11-12 | - |
+| [FEP-1b12: Group federation](./feps/fep-1b12.md) | `FINAL` | [#22](https://codeberg.org/fediverse/fep/issues/22) | 2022-11-12 | 2023-02-09 |
 | [FEP-8b32: Object Integrity Proofs](./feps/fep-8b32.md) | `DRAFT` | [#29](https://codeberg.org/fediverse/fep/issues/29) | 2022-11-12 | - |
 | [FEP-c390: Identity Proofs](./feps/fep-c390.md) | `DRAFT` | [#34](https://codeberg.org/fediverse/fep/issues/34) | 2022-11-23 | - |
 | [FEP-cb76: Content Addressed Vocabulary](./feps/fep-cb76.md) | `DRAFT` | [#41](https://codeberg.org/fediverse/fep/issues/41) | 2022-11-29 | - |
