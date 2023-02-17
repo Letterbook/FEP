@@ -1,6 +1,8 @@
 {
-  "@context": {
-    "@vocab": "_:",
-    "fep": "https://www.w3id.org/fep#"
-  }
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    {
+      "fep": "https://w3id.org/fep#"
+    }
+  ]
 }
