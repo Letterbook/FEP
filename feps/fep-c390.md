@@ -2,6 +2,7 @@
 authors: silverpill <silverpill@firemail.cc>
 status: DRAFT
 dateReceived: 2022-11-23
+relatedFeps: FEP-8b32
 discussionsTo: https://codeberg.org/fediverse/fep/issues/34
 ---
 # FEP-c390: Identity Proofs
@@ -26,9 +27,11 @@ It MUST contain the following properties:
 - `alsoKnownAs` (REQUIRED): the value of this property MUST match the actor ID.
 - `proof` (REQUIRED): the data integrity proof, as defined by [Data Integrity](https://w3c.github.io/vc-data-integrity/) specification.
 
-The document MUST not contain any additional properties.
+The document MAY contain additional properties.
 
 Identity proofs SHOULD be attached to an actor object, under the `attachment` property.
+
+WARNING: This proposal is not final yet and property names are subject to change. In particular, `id` will likely be replaced with `issuer` in order to make identity proofs forward compatible with [Verifiable Credentials Data Model v1.1](https://www.w3.org/TR/vc-data-model/) specification.
 
 ### Proof generation
 
