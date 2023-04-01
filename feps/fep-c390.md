@@ -11,6 +11,8 @@ discussionsTo: https://codeberg.org/fediverse/fep/issues/34
 
 This proposal describes a mechanism of linking cryptographic keys to [ActivityPub](https://www.w3.org/TR/activitypub/) actor profiles.
 
+Potential applications include: identity verification, end-to-end encryption and account migrations.
+
 ## History
 
 - Mastodon implemented [identity proofs](https://github.com/mastodon/mastodon/pull/10414) in 2019. Keybase platform was used as an identity provider, but the integration was later [removed](https://github.com/mastodon/mastodon/pull/17045).
@@ -22,16 +24,14 @@ Identity proof is a JSON document that represents a verifiable bi-directional li
 
 It MUST contain the following properties:
 
-- `type` (REQUIRED): the `type` property MUST contain the string `Identity`.
-- `id` (REQUIRED): the decentralized identifier (DID) that represents a cryptographic key belonging to an actor.
+- `type` (REQUIRED): the `type` property MUST contain the string `VerifiableIdentityStatement`.
+- `subject` (REQUIRED): the decentralized identifier (DID) that represents a cryptographic key belonging to an actor.
 - `alsoKnownAs` (REQUIRED): the value of this property MUST match the actor ID.
 - `proof` (REQUIRED): the data integrity proof, as defined by [Data Integrity](https://w3c.github.io/vc-data-integrity/) specification.
 
 The document MAY contain additional properties.
 
 Identity proofs SHOULD be attached to an actor object, under the `attachment` property.
-
-WARNING: This proposal is not final yet and property names are subject to change. In particular, `id` will likely be replaced with `issuer` in order to make identity proofs forward compatible with [Verifiable Credentials Data Model v1.1](https://www.w3.org/TR/vc-data-model/) specification.
 
 ### Proof generation
 
@@ -48,8 +48,9 @@ Example:
         "https://www.w3.org/ns/did/v1",
         "https://w3id.org/security/data-integrity/v1",
         {
-            "fep": "https://codeberg.org/fediverse/fep#",
-            "Identity": "fep:Identity"
+            "fep": "https://w3id.org/fep#"
+            "VerifiableIdentityStatement": "fep:VerifiableIdentityStatement",
+            "subject": "fep:subject"
         }
     ],
     "type": "Person",
@@ -57,8 +58,8 @@ Example:
     "inbox": "https://example.com/users/alice/inbox",
     "attachment": [
         {
-            "type": "Identity",
-            "id": "did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
+            "type": "VerifiableIdentityStatement",
+            "subject": "did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
             "alsoKnownAs": "https://example.com/users/alice",
             "proof": {
                 "type": "JcsEd25519Signature2022",
@@ -74,11 +75,11 @@ Example:
 
 ### Proof verification
 
-The receiving server MUST check the authenticity of identity proof document by verifying its data integrity proof. If the server can't verify the proof, or if the value of `verificationMethod` property of the data integrity proof doesn't match the value of `id` property of the identity proof, or if the value of `alsoKnownAs` property of the identity proof doesn't match the actor ID, the identity proof MUST be discarded.
+The receiving server MUST check the authenticity of identity proof document by verifying its data integrity proof. If the server can't verify the proof, or if the value of `verificationMethod` property of the data integrity proof doesn't match the value of `subject` property of the identity proof, or if the value of `alsoKnownAs` property of the identity proof doesn't match the actor ID, the identity proof MUST be discarded.
 
 Verification process MUST follow the *Data Integrity* specification, section [4.2 Verify Proof](https://w3c.github.io/vc-data-integrity/#verify-proof).
 
-The receiving server SHOULD treat identities denoted by `id` and `alsoKnownAs` properties of identity proof as belonging to the same entity.
+The receiving server SHOULD treat identities denoted by `subject` and `alsoKnownAs` properties of identity proof as belonging to the same entity.
 
 ## References
 
