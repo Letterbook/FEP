@@ -33,13 +33,13 @@ Do you have an idea, opinion or information that you want to share with the wide
 
 To create and submit a FEP:
 
-1. Think of a title for the FEP you want to submit.
-2. Compute the identifier of the FEP by computing the hash of the title. This can be done with following Unix command:
+1. Fork this repository, and then clone it to your local machine. Check the Codeberg [Cheat sheet](https://docs.codeberg.org/collaborating/pull-requests-and-git-flow/#cheat-sheet) on how to prepare your Pull Request.
+2. Think of a title for the FEP you want to submit.
+3. Compute the identifier of the FEP by computing the hash of the title. This can be done with following Unix command:
 ```
 $ echo -n "The title of my proposal" | sha256sum | cut -c-4
 b3f0
 ```
-3. Clone this repository.
 4. Copy the FEP template ([fep-0000-template.md](./fep-0000-template.md)) to the [feps/](feps/) folder and change the filename to `fep-abcd.md` where `abcd` is the identifier computed in step 2.
 5. Write down your idea in the newly created file and commit it to a new branch in your repository (ex. fep-xxxx).
 6. Create a Pull Request to complete Step 1 of [FEP-a4ed: The Fediverse Enhancement Proposal Process](./feps/fep-a4ed.md). Further process is described in FEP-a4ed.
