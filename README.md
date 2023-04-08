@@ -26,6 +26,7 @@ A Fediverse Enhancement Proposal (FEP) is a document that provides information t
 | [FEP-c118: Content licensing support](./feps/fep-c118.md) | `DRAFT` | [#57](https://codeberg.org/fediverse/fep/issues/57) | 2023-01-16 | - |
 | [FEP-2e40: The FEP Vocabulary Extension Process](./feps/fep-2e40.md) | `DRAFT` | [#62](https://codeberg.org/fediverse/fep/issues/62) | 2023-02-13 | - |
 | [FEP-7888: Demystifying the context property](./feps/fep-7888.md) | `DRAFT` | [#68](https://codeberg.org/fediverse/fep/issues/68) | 2023-03-14 | - |
+| [FEP-d767: Extend ActivityPub with Valueflows](./feps/fep-d767.md) | `DRAFT` | [#76](https://codeberg.org/fediverse/fep/issues/76) | 2023-04-02 | - |
 
 # Submitting a FEP
 
