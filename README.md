@@ -4,7 +4,9 @@ This is the Git repository containing Fediverse Enhancment Proposals (FEPs).
 
 A Fediverse Enhancement Proposal (FEP) is a document that provides information to the Fediverse community. The goal of a FEP is to improve interoperability and well-being of diverse services, applications and communities that form the Fediverse.
 
-# FEPs
+The FEP Process is an initiative of the [SocialHub](https://socialhub.activitypub.rocks) developer community, a liaison of the [W3C Social Web Incubator Community Group](https://www.w3.org/community/SocialCG/). For ongoing and past discussion see the [SocialHub FEP category](https://socialhub.activitypub.rocks/c/standards/fep/54).
+
+## FEPs
 
 <!-- TODO: This table is not CommonMark (as specified by FEP-a4ed) and requires maintenance. It should be replaced by a dynamically created table. -->
 
@@ -28,7 +30,7 @@ A Fediverse Enhancement Proposal (FEP) is a document that provides information t
 | [FEP-7888: Demystifying the context property](./feps/fep-7888.md) | `DRAFT` | [#68](https://codeberg.org/fediverse/fep/issues/68) | 2023-03-14 | - |
 | [FEP-d767: Extend ActivityPub with Valueflows](./feps/fep-d767.md) | `DRAFT` | [#76](https://codeberg.org/fediverse/fep/issues/76) | 2023-04-02 | - |
 
-# Submitting a FEP
+## Submitting a FEP
 
 Do you have an idea, opinion or information that you want to share with the wider Fediverse community? You may do so with a Fediverse Enhancement Proposal (FEP).
 
@@ -45,11 +47,15 @@ b3f0
 5. Write down your idea in the newly created file and commit it to a new branch in your repository (ex. fep-xxxx).
 6. Create a Pull Request to complete Step 1 of [FEP-a4ed: The Fediverse Enhancement Proposal Process](./feps/fep-a4ed.md). Further process is described in FEP-a4ed.
 
-# Editors
+## Editors
 
-Editors are listed in the [EDITORS.md](EDITORS.md) file.
+The list of FEP's is facilitated by Editors who are listed in the [EDITORS.md](EDITORS.md) file. Editors are neutral custodians of the FEP process, who merge PR's, create tracking issues, and start discussion threads for each FEP in the [SocialHub](https://socialhub.activitypub.rocks) developer community forum.
 
-# Copyright
+## Contributing
+
+Do you have ideas to improve the FEP Process? Post your suggestions to the issue tracker, or on the SocialHub forum. The SocialHub developer community is a "DoOcracy" which means: “pick up any task you want, and then steer it to completion”. Your contributions are most welcome, so delve in and find out how you can help.
+
+## License
 
 CC0 1.0 Universal (CC0 1.0) Public Domain Dedication 
 
