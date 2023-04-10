@@ -10,9 +10,17 @@ dateReceived: 2023-04-10
 
 This proposal would allow Collections to have a `streams` property, as Actors do. The streams would be additional Collections that are sorted or filtered versions of the original Collection.
 
-The property that determines the sort order and/or the filtered property should be made available, possibly via the `context` property. The examples below use [Schema.org's `PropertyValue`](https://schema.org/PropertyValue) for lack of a better vocabulary.
+Additionally, metadata about the sorting/filtering could be indicated using new proposed additions to the ActivityStreams vocabulary: `orderedBy`, `reversed`, `filteredProperty`, and `filteredValue`.
 
-Sorted Collections would always be of the type `OrderedCollection`. The `current` property would indicate a sorted Collection with a reverse-ordered sort.
+## Implementation
+
+Sorted Collections would always be of the type `Collection` so as not to violate the purpose of OrderedCollections, but would use `orderedItems` instead of `items`. The `reversed` property would indicate that a sorted Collection is in the reverse order.
+
+The `filteredProperty` and `filteredValue` attributes would indicate the specific property being filtered and its corresponding value. These attributes can be represented as strings that reference properties from the Activity Vocabulary (e.g., `type` and `Person`).
+
+When multiple filters are applied, both `filteredProperty` and `filteredValue` would be arrays of strings.
+
+When applying filters to properties within nested objects, dot notation would identify the targeted property for filtering (e.g., `object.type`).
 
 ## Motivations
 
@@ -20,7 +28,9 @@ Some ActivityPub clients rely only on C2S protocols for accessing Collections an
 
 Currently, in order to support filtering or sorting, these clients need to retrieve all paginated items, assemble them, manually sort or filter them, and then re-paginate them.
 
-This proposal would allow servers to perform these kinds of operations to ease the burden on clients.
+This proposal would allow servers to perform these kinds of operations, either at runtime or ahead of time, to ease the burden on clients.
+
+Regarding S2S protocols: other servers should be free to explore the Collections, but they can be easily ignored, along with the new properties.
 
 ## Examples
 
@@ -43,19 +53,24 @@ Hashtags will typically be entered into a database according to the order of cre
       "id": "https://example.social/hashtags/ordered/name",
       "url": "https://example.social/hashtags/ordered/name",
       "name": "Hashtags",
-      "summary": "Hashtags, Ordered by Name",
-      "type": "OrderedCollection",
+      "summary": "Hashtags, Ordered by Name (A -> Z)",
+      "type": "Collection",
       "totalItems": 100,
       "first": "https://example.social/hashtags/ordered/name/page/1",
       "last": "https://example.social/hashtags/ordered/name/page/2",
-      "current": "https://example.social/hashtags/ordered/name/reverse",
-      "context": [
-        {
-          "type": "https://schema.org/PropertyValue",
-          "https://schema.org/name": "sortedByProperty",
-          "https://schema.org/value": "name"
-        }
-      ]
+      "orderedBy": "name"
+    },
+    {
+      "id": "https://example.social/hashtags/ordered/name/reversed",
+      "url": "https://example.social/hashtags/ordered/name/reversed",
+      "name": "Hashtags",
+      "summary": "Hashtags, Ordered by Name (Z -> A)",
+      "type": "Collection",
+      "totalItems": 100,
+      "first": "https://example.social/hashtags/ordered/name/reversed/page/1",
+      "last": "https://example.social/hashtags/ordered/name/reversed/page/2",
+      "orderedBy": "name",
+      "reversed": true
     }
   ]
 }
@@ -89,19 +104,8 @@ The second filtered stream filters Activities by their type and their nested Obj
       "totalItems": 100,
       "first": "https://example.social/@alyssa/inbox/likes/page/1",
       "last": "https://example.social/@alyssa/inbox/likes/page/2",
-      "current": "https://example.social/@alyssa/inbox/likes/reverse",
-      "context": [
-        {
-          "type": "https://schema.org/PropertyValue",
-          "https://schema.org/name": "filteredByProperty",
-          "https://schema.org/value": "type"
-        },
-        {
-          "type": "https://schema.org/PropertyValue",
-          "https://schema.org/name": "filteredByValue",
-          "https://schema.org/value": "Like"
-        }
-      ]
+      "filteredProperty": "type",
+      "filteredValue": "Like"
     },
     {
       "id": "https://example.social/@alyssa/inbox/notes",
@@ -112,33 +116,14 @@ The second filtered stream filters Activities by their type and their nested Obj
       "totalItems": 100,
       "first": "https://example.social/@alyssa/inbox/notes/page/1",
       "last": "https://example.social/@alyssa/inbox/notes/page/2",
-      "current": "https://example.social/@alyssa/inbox/notes/reverse",
-      "context": [
-        {
-          "type": "https://schema.org/PropertyValue",
-          "https://schema.org/name": "filteredByProperty",
-          "https://schema.org/value": "type"
-        },
-        {
-          "type": "https://schema.org/PropertyValue",
-          "https://schema.org/name": "filteredByValue",
-          "https://schema.org/value": "Create"
-        },
-        {
-          "type": "https://schema.org/PropertyValue",
-          "https://schema.org/name": "filteredByProperty",
-          "https://schema.org/value": "object.type"
-        },
-        {
-          "type": "https://schema.org/PropertyValue",
-          "https://schema.org/name": "filteredByProperty",
-          "https://schema.org/value": "Note"
-        }
-      ]
+      "filteredProperty": ["type", "object.type"],
+      "filteredValue": ["Create", "Note"]
     }
   ]
 }
 ```
+
+Note that this example using an Actor's Inbox may be more suitably linked via an Actor's `streams` instead of on the Inbox itself but is designed to show how filters might work.
 
 ## Security
 
@@ -147,7 +132,6 @@ Servers could in theory make available a templated URL endpoint that allows for 
 ## References
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
-- [ABC] Alyssa P.Hacker, [An example proposal](http://example.org/abc.html), 2020
 
 ## Copyright
 
