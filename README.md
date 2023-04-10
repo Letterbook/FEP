@@ -29,6 +29,7 @@ The FEP Process is an initiative of the [SocialHub](https://socialhub.activitypu
 | [FEP-2e40: The FEP Vocabulary Extension Process](./feps/fep-2e40.md) | `DRAFT` | [#62](https://codeberg.org/fediverse/fep/issues/62) | 2023-02-13 | - |
 | [FEP-7888: Demystifying the context property](./feps/fep-7888.md) | `DRAFT` | [#68](https://codeberg.org/fediverse/fep/issues/68) | 2023-03-14 | - |
 | [FEP-d767: Extend ActivityPub with Valueflows](./feps/fep-d767.md) | `DRAFT` | [#76](https://codeberg.org/fediverse/fep/issues/76) | 2023-04-02 | - |
+| [FEP-5bf0: Collection sorting and filtering](./feps/fep-5bf0.md) | `DRAFT` | [#80](https://codeberg.org/fediverse/fep/issues/80) | 2023-04-10 | - |
 
 ## Submitting a FEP
 
