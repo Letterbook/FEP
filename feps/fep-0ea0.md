@@ -2,6 +2,7 @@
 authors: silverpill <silverpill@firemail.cc>
 status: DRAFT
 dateReceived: 2023-04-18
+discussionsTo: https://codeberg.org/fediverse/fep/issues/88
 ---
 # FEP-0ea0: Payment Links
 
@@ -14,9 +15,9 @@ This FEP describes a way to attach payment information to [ActivityPub](https://
 Payment link is an object with the following properties:
 
 - `type` (REQUIRED): the type MUST be `Link`.
-- `name` (REQUIRED): the `name` property MUST contain a human-readable description of the payment link.
+- `name` (RECOMMENDED): the `name` property SHOULD contain a human-readable description of the payment link.
 - `href` (REQUIRED): the `href` property MUST contain a payment URI. This can be a URL of a website, or any other kind of URI, such as [payto URI](https://datatracker.ietf.org/doc/html/rfc8905).
-- `rel` (REQUIRED):  the `rel` property MUST contain the string `payment` or an array with the first element being that string. The `payment` relation type is defined in [Link Relations Registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml).
+- `rel` (REQUIRED):  the `rel` property MUST contain the string `payment` or an array containing that string. The `payment` relation type is defined in [Link Relations Registry](https://www.iana.org/assignments/link-relations/link-relations.xhtml).
 
 Payment links MUST be added to `attachment` array of an actor or an object.
 
@@ -64,6 +65,12 @@ Payment link attached to an object:
   ]
 }
 ```
+
+## Payment links as actor metadata
+
+(This section is non-normative.)
+
+Implementers may treat payment links attached to actor object in the same way as actor metadata fields. In that case, `name` translates into field label and `href` translates into field value.
 
 ## References
 
