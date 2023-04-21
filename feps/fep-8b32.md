@@ -12,7 +12,7 @@ This proposal describes how [ActivityPub](https://www.w3.org/TR/activitypub/) se
 
 HTTP signatures are often used for authentication during server-to-server interactions. However, this ties authentication to activity delivery, and limits the flexibility of the protocol.
 
-Integrity proofs are sets of attributes that represent digital signatures and parameters required to verify them. These proofs can be added to any activity or object, allowing recipients to verify the identity of the actor and integrity of the data. That decouples authentication from the transport, and enables various protocol improvements such as activity relaying and nomadic identity.
+Integrity proofs are sets of attributes that represent digital signatures and parameters required to verify them. These proofs can be added to any activity or object, allowing recipients to verify the identity of the actor and integrity of the data. That decouples authentication from the transport, and enables various protocol improvements such as activity relaying, embedded objects and client-side signing.
 
 ## History
 
@@ -70,16 +70,17 @@ Example of activity with integrity proof:
         "content": "Hello world"
     },
     "proof": {
-        "type": "JcsRsaSignature2022",
+        "type": "DataIntegrityProof",
+        "cryptosuite": "jcs-rsa-2022",
         "created": "2022-11-12T00:00:00Z",
         "verificationMethod": "https://example.com/users/alice#main-key",
         "proofPurpose": "assertionMethod",
-        "proofValue": "z2xZFiRJrr859BvmK22hS47448J..."
+        "proofValue": "<proof-value>"
     }
 }
 ```
 
-The list of attributes used in integrity proof is defined in *Data Integrity* specification, section [2.1 Proofs](https://w3c.github.io/vc-data-integrity/#proofs). The value of `verificationMethod` attribute SHOULD be an URL of actor's public key or a [DID](https://www.w3.org/TR/did-core/) associated with an actor.
+The list of attributes used in integrity proof is defined in *Data Integrity* specification, section [2.1 Proofs](https://w3c.github.io/vc-data-integrity/#proofs). The proof type SHOULD be `DataIntegrityProof`, as specified in section [3.1 DataIntegrityProof](https://w3c.github.io/vc-data-integrity/#dataintegrityproof). The value of `verificationMethod` attribute SHOULD be an URL of actor's public key or a [DID](https://www.w3.org/TR/did-core/) associated with an actor.
 
 ### Proof verification
 
@@ -89,11 +90,15 @@ If both HTTP signature and integrity proof are used, the integrity proof MUST be
 
 ### Algorithms
 
-Implementors SHOULD pursue broad interoperability when choosing algorithms for integrity proofs. These algorithms are RECOMMENDED:
+Implementers SHOULD pursue broad interoperability when choosing algorithms for integrity proofs.
+
+[jcs-eddsa-2022](https://w3c.github.io/vc-di-eddsa/#jcs-eddsa-2022) cryptosuite is RECOMMENDED:
 
 - Canonicalization: [JCS](https://www.rfc-editor.org/rfc/rfc8785)
 - Hashing: SHA-256
-- Signatures: RSASSA-PKCS1-v1_5
+- Signatures: EdDSA
+
+Support for **RSASSA-PKCS1-v1_5** signature algorithm is OPTIONAL but could be desirable for interoperability with legacy systems.
 
 ### Backwards compatibility
 
@@ -109,6 +114,7 @@ Integrity proofs and Linked Data signatures can be used together, as they rely o
 - [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html), 1997
 - [Data Integrity] Dave Longley, Manu Sporny, [Verifiable Credential Data Integrity 1.0](https://w3c.github.io/vc-data-integrity/), 2022
 - [DID] Manu Sporny, Dave Longley, Markus Sabadell, Drummond Reed, Orie Steele, Christopher Allen, [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/), 2022
+- [jcs-eddsa-2022] Dave Longley, Manu Sporny, [EdDSA Cryptosuite v2022](https://w3c.github.io/vc-di-eddsa/), 2023
 - [JCS] A. Rundgren, B. Jordan, S. Erdtman, [JSON Canonicalization Scheme (JCS)](https://www.rfc-editor.org/rfc/rfc8785), 2020
 
 ## Copyright
