@@ -32,13 +32,13 @@ Example:
 {
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Note",
-    "content": "This is a quote:<br>RE: https://example.com/objects/123",
+    "content": "This is a quote:<br>RE: https://server.example/objects/123",
     "tag": [
         {
             "type": "Link",
             "mediaType": "application/ld+json; profile=\"https://www.w3.org/ns/activitystreams\"",
-            "href": "https://example.com/objects/123",
-            "name": "RE: https://example.com/objects/123"
+            "href": "https://server.example/objects/123",
+            "name": "RE: https://server.example/objects/123"
         }
     ]
 }
@@ -48,7 +48,9 @@ Note that the `content` includes the `RE: <url>` microsyntax but consuming imple
 
 ## Implementations
 
-TBD
+- (streams)
+- FoundKey
+- Mitra
 
 ## References
 
