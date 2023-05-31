@@ -107,6 +107,9 @@ Integrity proofs and Linked Data signatures can be used together, as they rely o
 ## Implementations
 
 - [Mitra](https://codeberg.org/silverpill/mitra/src/tag/v1.13.0/FEDERATION.md#object-integrity-proofs)
+- Vervis
+  ([generation](https://codeberg.org/ForgeFed/Vervis/commit/e8e587af26944d3ea8d91f5c47cc3058cf261387),
+  [verification](https://codeberg.org/ForgeFed/Vervis/commit/621275e25762a1c1e5860d07a6ff87b147deed4f))
 
 ## References
 
