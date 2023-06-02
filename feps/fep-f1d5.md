@@ -1,6 +1,6 @@
 ---
 authors: CJ <cjslep@gmail.com>, silverpill <silverpill@firemail.cc>
-status: DRAFT
+status: FINAL
 dateReceived: 2020-12-13
 discussionsTo: https://codeberg.org/fediverse/fep/issues/50
 ---
