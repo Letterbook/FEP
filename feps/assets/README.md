@@ -1,0 +1,1 @@
+This directory has been deprecated. Assets related to FEPs should be colocated within the same folder as the relevant FEP.

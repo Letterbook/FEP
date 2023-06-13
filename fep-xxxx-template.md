@@ -1,9 +1,10 @@
 ---
+slug: "xxxx"
 authors: Alyssa P. Hacker <alyssa.p.hacker@social.example>, Chatty Ben <ben@chatty.example>
 status: DRAFT
 dateReceived: 1970-01-01
 ---
-# FEP-XXXX: TITLE
+# FEP-xxxx: Title of your FEP
 
 
 ## Summary
@@ -14,7 +15,7 @@ dateReceived: 1970-01-01
 ## References
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
-- [ABC] Alyssa P.Hacker, [An example proposal](http://example.org/abc.html), 2020
+- [ABC] Alyssa P. Hacker, [An example proposal](http://example.org/abc.html), 2020
 
 
 ## Copyright
