@@ -1,0 +1,9 @@
+when:
+  branch: [main]
+
+pipeline:
+  build:
+    image: python:3.11-alpine
+    commands:
+      - pip install pytest
+      - pytest
