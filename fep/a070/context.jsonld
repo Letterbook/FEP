@@ -1,0 +1,14 @@
+{
+  "@context": {
+    "orderedAttachment": {
+      "@id": "https://www.w3.org/ns/activitystreams#attachment",
+      "@type": "@id",
+      "@container": "@list"
+    },
+    "orderedTag": {
+      "@id": "https://www.w3.org/ns/activitystreams#tag",
+      "@type": "@id",
+      "@container": "@list"
+    }
+  }
+}
