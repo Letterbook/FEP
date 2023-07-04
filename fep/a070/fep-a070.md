@@ -3,6 +3,7 @@ slug: "a070"
 authors: a <a@trwnh.com>
 status: DRAFT
 dateReceived: 2023-06-13
+discussionsTo: https://codeberg.org/api/v1/repos/fediverse/fep/issues/121
 ---
 # FEP-a070: Ordered properties for plain JSON consumers
 

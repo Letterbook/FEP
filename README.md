@@ -35,6 +35,7 @@ The FEP Process is an initiative of the [SocialHub](https://socialhub.activitypu
 | [FEP-612d: Identifying ActivityPub Objects through DNS ](./fep/612d/fep-612d.md) | `DRAFT` | [#89](https://codeberg.org/fediverse/fep/issues/89) | 2023-04-18 | - |
 | [FEP-fffd: Proxy Objects](./fep/fffd/fep-fffd.md) | `DRAFT` | [#95](https://codeberg.org/fediverse/fep/issues/95) | 2023-04-29 | - |
 | [FEP-4adb: Dereferencing identifiers with webfinger](./fep/4adb/fep-4adb.md) | `DRAFT` | [#100](https://codeberg.org/fediverse/fep/issues/100) | 2023-05-13 | - |
+| [FEP-a070: Ordered properties for plain JSON consumers](./fep/a070/fep-a070.md) | `DRAFT` | [#121](https://codeberg.org/api/v1/repos/fediverse/fep/issues/121) | 2023-06-13 | - |
 
 
 ## Submitting a FEP
