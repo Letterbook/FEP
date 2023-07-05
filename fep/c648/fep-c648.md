@@ -3,6 +3,7 @@ slug: "c648"
 authors: Evan Prodromou <evan@prodromou.name>
 status: DRAFT
 dateReceived: 2023-06-14
+discussionsTo: https://codeberg.org/fediverse/fep/issues/123
 ---
 # FEP-c648: Blocked Collection
 

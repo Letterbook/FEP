@@ -36,6 +36,7 @@ The FEP Process is an initiative of the [SocialHub](https://socialhub.activitypu
 | [FEP-fffd: Proxy Objects](./fep/fffd/fep-fffd.md) | `DRAFT` | [#95](https://codeberg.org/fediverse/fep/issues/95) | 2023-04-29 | - |
 | [FEP-4adb: Dereferencing identifiers with webfinger](./fep/4adb/fep-4adb.md) | `DRAFT` | [#100](https://codeberg.org/fediverse/fep/issues/100) | 2023-05-13 | - |
 | [FEP-a070: Ordered properties for plain JSON consumers](./fep/a070/fep-a070.md) | `DRAFT` | [#121](https://codeberg.org/fediverse/fep/issues/121) | 2023-06-13 | - |
+| [FEP-c648: Blocked Collection](./fep/c648/fep-c648.md) | `DRAFT` | [#123](https://codeberg.org/fediverse/fep/issues/123) | 2023-06-14 | - |
 
 ## Submitting a FEP
 
@@ -52,9 +53,14 @@ $ echo -n "The title of my proposal" | sha256sum | cut -c-4
 b3f0
 ```
 
-4. Create a subdirectory of `fep/`(fep/) using the identifier you just computed. Copy the FEP template ([fep-xxxx-template.md](./fep-xxxx-template.md)) to this subdirectory and change the filename appropriately. Use the identifer as the "slug" when filling out the frontmatter. For example, if your computed identifier was `abcd`, then your file would be located at `fep/abcd/fep-abcd.md` and your frontmatter would include `slug: "abcd"`.
-5. Write down your idea in the newly created file and commit it to a new branch in your repository (ex. fep-xxxx).
-6. Create a Pull Request to complete Step 1 of [FEP-a4ed: The Fediverse Enhancement Proposal Process](./feps/fep-a4ed.md). Further process is described in FEP-a4ed.
+4. Create a subdirectory of `fep/`(fep/) using the identifier you just computed.
+5. Copy the FEP template ([fep-xxxx-template.md](./fep-xxxx-template.md)) to this subdirectory and change the filename appropriately.
+6. Use the identifer as the "slug" when filling out the frontmatter.
+
+    - For example, if your computed identifier was `abcd`, then your file would be located at `fep/abcd/fep-abcd.md` and your frontmatter would include `slug: "abcd"`.
+
+7. Write down your idea in the newly created file and commit it to a new branch in your repository (ex. fep-xxxx).
+8. Create a Pull Request to complete Step 1 of [FEP-a4ed: The Fediverse Enhancement Proposal Process](./feps/fep-a4ed.md). Further process is described in FEP-a4ed.
 
 ## Editors
 
