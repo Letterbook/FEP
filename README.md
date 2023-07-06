@@ -1,5 +1,7 @@
 # Fediverse Enhancement Proposals
 
+<!-- DO NOT EDIT! File automatically generated with scripts/create_readme.py. -->
+
 This is the Git repository containing Fediverse Enhancment Proposals (FEPs).
 
 A Fediverse Enhancement Proposal (FEP) is a document that provides information to the Fediverse community. The goal of a FEP is to improve interoperability and well-being of diverse services, applications and communities that form the Fediverse.
@@ -8,7 +10,7 @@ The FEP Process is an initiative of the [SocialHub](https://socialhub.activitypu
 
 ## FEPs
 
-<!-- TODO: This table is not CommonMark (as specified by FEP-a4ed) and requires maintenance. It should be replaced by a dynamically created table. -->
+<!-- TODO: This table is not CommonMark (as specified by FEP-a4ed) and requires maintenance. -->
 
 | Title                                                                               | Status  | Tracking issue                                                                              | `dateReceived` | `dateFinalized` (or `dateWithdrawn`) |
 | ---                                                                                 | ---     | -----                                                                                       | -------        | ------                               |
@@ -37,6 +39,7 @@ The FEP Process is an initiative of the [SocialHub](https://socialhub.activitypu
 | [FEP-4adb: Dereferencing identifiers with webfinger](./fep/4adb/fep-4adb.md) | `DRAFT` | [#100](https://codeberg.org/fediverse/fep/issues/100) | 2023-05-13 | - |
 | [FEP-a070: Ordered properties for plain JSON consumers](./fep/a070/fep-a070.md) | `DRAFT` | [#121](https://codeberg.org/fediverse/fep/issues/121) | 2023-06-13 | - |
 | [FEP-c648: Blocked Collection](./fep/c648/fep-c648.md) | `DRAFT` | [#123](https://codeberg.org/fediverse/fep/issues/123) | 2023-06-14 | - |
+| [FEP-bad1: Object history collection](./fep/bad1/fep-bad1.md) | `DRAFT` | [#124](https://codeberg.org/fediverse/fep/issues/124) | 2023-06-15 | - |
 
 ## Submitting a FEP
 
@@ -47,16 +50,14 @@ To create and submit a FEP:
 1. Fork this repository, and then clone it to your local machine. Check the Codeberg [Cheat sheet](https://docs.codeberg.org/collaborating/pull-requests-and-git-flow/#cheat-sheet) on how to prepare your Pull Request.
 2. Think of a title for the FEP you want to submit.
 3. Compute the identifier of the FEP by computing the hash of the title. This can be done with following Unix command:
-
 ```
 $ echo -n "The title of my proposal" | sha256sum | cut -c-4
 b3f0
 ```
-
 4. Create a subdirectory of `fep/`(fep/) using the identifier you just computed.
 5. Copy the FEP template ([fep-xxxx-template.md](./fep-xxxx-template.md)) to this subdirectory and change the filename appropriately.
-6. Use the identifer as the "slug" when filling out the frontmatter.
-
+6. Use the identifer as the "slug" when filling out the frontmatter. 
+    
     - For example, if your computed identifier was `abcd`, then your file would be located at `fep/abcd/fep-abcd.md` and your frontmatter would include `slug: "abcd"`.
 
 7. Write down your idea in the newly created file and commit it to a new branch in your repository (ex. fep-xxxx).
@@ -72,6 +73,6 @@ Do you have ideas to improve the FEP Process? Post your suggestions to the issue
 
 ## License
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
+CC0 1.0 Universal (CC0 1.0) Public Domain Dedication 
 
 To the extent possible under law, the authors of this document have waived all copyright and related or neighboring rights to this work.

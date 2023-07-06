@@ -3,6 +3,7 @@ slug: "bad1"
 authors: a <a@trwnh.com>
 status: DRAFT
 dateReceived: 2023-06-15
+discussionsTo: https://codeberg.org/fediverse/fep/issues/124
 ---
 # FEP-bad1: Object history collection
 
