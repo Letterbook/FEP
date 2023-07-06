@@ -1,0 +1,8 @@
+{
+  "@context": {
+    "history": {
+      "@id": "https://w3id.org/fep/bad1/history",
+      "@type": "@id"
+    }
+  }
+}
