@@ -3,6 +3,7 @@ slug: "d36d"
 authors: Zack Dunn <zack@tilde.team>
 status: DRAFT
 dateReceived: 2023-07-01
+discussionsTo: https://codeberg.org/fediverse/fep/issues/125
 ---
 # FEP-d36d: Sharing Content Across Federated Forums
 
