@@ -1,1 +1,1 @@
-[moved to /fep/0ea0](../fep/0ea0)
+[moved to /fep/0ea0](../fep/0ea0/fep-0ea0.md)
