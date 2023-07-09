@@ -41,6 +41,7 @@ The FEP Process is an initiative of the [SocialHub](https://socialhub.activitypu
 | [FEP-c648: Blocked Collection](./fep/c648/fep-c648.md) | `DRAFT` | [#123](https://codeberg.org/fediverse/fep/issues/123) | 2023-06-14 | - |
 | [FEP-bad1: Object history collection](./fep/bad1/fep-bad1.md) | `DRAFT` | [#124](https://codeberg.org/fediverse/fep/issues/124) | 2023-06-15 | - |
 | [FEP-d36d: Sharing Content Across Federated Forums](./fep/d36d/fep-d36d.md) | `DRAFT` | [#125](https://codeberg.org/fediverse/fep/issues/125) | 2023-07-01 | - |
+| [FEP-1970: Chat Links](./fep/1970/fep-1970.md) | `DRAFT` | [#128](https://codeberg.org/fediverse/fep/issues/128) | 2023-07-04 | - |
 
 ## Submitting a FEP
 
