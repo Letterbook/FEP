@@ -3,6 +3,7 @@ slug: "8b32"
 authors: silverpill <silverpill@firemail.cc>
 status: DRAFT
 dateReceived: 2022-11-12
+relatedFeps: FEP-521a
 discussionsTo: https://codeberg.org/fediverse/fep/issues/29
 ---
 # FEP-8b32: Object Integrity Proofs
@@ -48,7 +49,7 @@ Example of unsigned activity:
         "https://w3id.org/security/data-integrity/v1"
     ],
     "type": "Create",
-    "actor": "https://example.com/users/alice",
+    "actor": "https://server.example/users/alice",
     "object": {
         "type": "Note",
         "content": "Hello world"
@@ -65,18 +66,18 @@ Example of activity with integrity proof:
         "https://w3id.org/security/data-integrity/v1"
     ],
     "type": "Create",
-    "actor": "https://example.com/users/alice",
+    "actor": "https://server.example/users/alice",
     "object": {
         "type": "Note",
         "content": "Hello world"
     },
     "proof": {
         "type": "DataIntegrityProof",
-        "cryptosuite": "jcs-rsa-2022",
-        "created": "2022-11-12T00:00:00Z",
-        "verificationMethod": "https://example.com/users/alice#main-key",
+        "cryptosuite": "jcs-eddsa-2022",
+        "verificationMethod": "https://server.example/users/alice#ed25519-key",
         "proofPurpose": "assertionMethod",
-        "proofValue": "<proof-value>"
+        "proofValue": "z2nnHsFrkVJcmfprDuquc5bjjSZSUoFXbYZkyZFyptXVhwUwEBnhYftu9Jh25b9oZAn4WcPNY6mjhv2g3EuVc7fjC",
+        "created": "2023-02-24T23:36:38Z"
     }
 }
 ```
@@ -105,9 +106,13 @@ Support for **RSASSA-PKCS1-v1_5** signature algorithm is OPTIONAL but could be d
 
 Integrity proofs and Linked Data signatures can be used together, as they rely on different properties (`proof` and `signature`, respectively).
 
+## Test vectors
+
+See [fep-8b32.feature](./fep-8b32.feature)
+
 ## Implementations
 
-- [Mitra](https://codeberg.org/silverpill/mitra/src/tag/v1.13.0/FEDERATION.md#object-integrity-proofs)
+- [Mitra](https://codeberg.org/silverpill/mitra/src/commit/b510241066bacb7285a0414124fa68aee40d9b43/FEDERATION.md#object-integrity-proofs)
 - Vervis
   ([generation](https://codeberg.org/ForgeFed/Vervis/commit/e8e587af26944d3ea8d91f5c47cc3058cf261387),
   [verification](https://codeberg.org/ForgeFed/Vervis/commit/621275e25762a1c1e5860d07a6ff87b147deed4f))
