@@ -3,6 +3,7 @@ slug: "4ccd"
 authors: Evan Prodromou <evan@prodromou.name>
 status: DRAFT
 dateReceived: 2023-06-21
+discussionsTo: https://codeberg.org/fediverse/fep/issues/129
 ---
 # FEP-4ccd: Pending Followers Collection and Pending Following Collection
 
