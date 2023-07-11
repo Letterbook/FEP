@@ -10,7 +10,7 @@ discussionsTo: https://codeberg.org/fediverse/fep/issues/34
 
 ## Summary
 
-This proposal describes a mechanism of linking cryptographic keys to [ActivityPub](https://www.w3.org/TR/activitypub/) actor profiles.
+This proposal describes a mechanism of creating verifiable links between [Decentralized Identifiers](https://www.w3.org/TR/did-core/) and [ActivityPub](https://www.w3.org/TR/activitypub/) actor profiles.
 
 Potential applications include: identity verification, end-to-end encryption and account migrations.
 
@@ -36,7 +36,7 @@ Identity proofs SHOULD be attached to an actor object, under the `attachment` pr
 
 ### Proof generation
 
-The identity proof document MUST contain a data integrity proof, which includes a cryptographic proof and parameters required to verify it. It MUST be created according to the *Data Integrity* specification, section [4.1 Generate Proof](https://w3c.github.io/vc-data-integrity/#generate-proof). The value of `verificationMethod` property of the data integrity proof MUST match the value of `id` property of the identity proof document.
+The identity proof document MUST contain a data integrity proof, which includes a cryptographic proof and parameters required to verify it. It MUST be created according to the *Data Integrity* specification, section [4.1 Generate Proof](https://w3c.github.io/vc-data-integrity/#generate-proof). The value of `verificationMethod` property of the data integrity proof MUST match the value of `subject` property of the identity proof document.
 
 The resulting data integrity proof MUST be added to identity proof document under the `proof` key.
 
@@ -49,21 +49,23 @@ Example:
         "https://www.w3.org/ns/did/v1",
         "https://w3id.org/security/data-integrity/v1",
         {
-            "fep": "https://w3id.org/fep#"
+            "fep": "https://w3id.org/fep#",
             "VerifiableIdentityStatement": "fep:VerifiableIdentityStatement",
             "subject": "fep:subject"
         }
     ],
     "type": "Person",
-    "id": "https://example.com/users/alice",
-    "inbox": "https://example.com/users/alice/inbox",
+    "id": "https://server.example/users/alice",
+    "inbox": "https://server.example/users/alice/inbox",
+    "outbox": "https://server.example/users/alice/outbox",
     "attachment": [
         {
             "type": "VerifiableIdentityStatement",
             "subject": "did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
-            "alsoKnownAs": "https://example.com/users/alice",
+            "alsoKnownAs": "https://server.example/users/alice",
             "proof": {
-                "type": "JcsEd25519Signature2022",
+                "type": "DataIntegrityProof",
+                "cryptosuite": "jcs-eddsa-2022",
                 "created": "2022-11-12T00:00:00Z",
                 "verificationMethod": "did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
                 "proofPurpose": "assertionMethod",
@@ -76,16 +78,20 @@ Example:
 
 ### Proof verification
 
-The receiving server MUST check the authenticity of identity proof document by verifying its data integrity proof. If the server can't verify the proof, or if the value of `verificationMethod` property of the data integrity proof doesn't match the value of `subject` property of the identity proof, or if the value of `alsoKnownAs` property of the identity proof doesn't match the actor ID, the identity proof MUST be discarded.
+The consuming implementations MUST check the authenticity of identity proof document by verifying its data integrity proof. If the proof can not be verified, or if the value of `verificationMethod` property of the data integrity proof doesn't match the value of `subject` property of the identity proof, or if the value of `alsoKnownAs` property of the identity proof doesn't match the actor ID, the identity proof MUST be discarded.
 
 Verification process MUST follow the *Data Integrity* specification, section [4.2 Verify Proof](https://w3c.github.io/vc-data-integrity/#verify-proof).
 
-The receiving server SHOULD treat identities denoted by `subject` and `alsoKnownAs` properties of identity proof as belonging to the same entity.
+### Linking identities
+
+The consuming implementations SHOULD treat identities denoted by `subject` and `alsoKnownAs` properties of identity proof as belonging to the same entity.
+
+If two actors have identity proofs with the same `subject` property, they SHOULD be treated as different identities of the same entity.
 
 ## References
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
-- [Decentralized Identifier] Manu Sporny, Dave Longley, Markus Sabadell, Drummond Reed, Orie Steele, Christopher Allen, [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/), 2022
+- [Decentralized Identifiers] Manu Sporny, Dave Longley, Markus Sabadell, Drummond Reed, Orie Steele, Christopher Allen, [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/), 2022
 - [Data Integrity] Dave Longley, Manu Sporny, [Verifiable Credential Data Integrity 1.0](https://w3c.github.io/vc-data-integrity/), 2022
 
 ## Copyright
