@@ -81,7 +81,7 @@ Feature: FEP-8b32: Object Integrity Proofs
                 "id": "https://server.example/users/alice",
                 "inbox": "https://server.example/users/alice/inbox",
                 "outbox": "https://server.example/users/alice/outbox",
-                "authentication": [
+                "assertionMethod": [
                     {
                         "id": "https://server.example/users/alice#ed25519-key",
                         "type": "Multikey",
