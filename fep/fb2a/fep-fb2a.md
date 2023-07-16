@@ -3,6 +3,7 @@ slug: "fb2a"
 authors: a <a@trwnh.com>
 status: DRAFT
 dateReceived: 2022-12-09
+discussionsTo: https://codeberg.org/fediverse/fep/issues/45
 ---
 # FEP-fb2a: Actor metadata
 

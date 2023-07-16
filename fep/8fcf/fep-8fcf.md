@@ -4,6 +4,7 @@ authors: Claire <claire.fep-1d7d@sitedethib.com>
 status: FINAL
 dateReceived: 2020-10-24
 dateFinalized: 2022-02-07
+discussionsTo: https://codeberg.org/fediverse/fep/issues/6, https://git.activitypub.dev/ActivityPubDev/Fediverse-Enhancement-Proposals/issues/11
 ---
 # FEP-8fcf: Followers collection synchronization across servers
 

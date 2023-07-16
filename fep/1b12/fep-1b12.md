@@ -4,6 +4,7 @@ authors: Felix Ableitner <me@nutomic.com>
 status: FINAL
 dateReceived: 2022-11-12
 dateFinalized: 2023-02-09
+discussionsTo: https://codeberg.org/fediverse/fep/issues/22
 ---
 # FEP-1b12: Group federation
 

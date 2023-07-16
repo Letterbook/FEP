@@ -3,6 +3,7 @@ slug: "5bf0"
 authors: Michael Puckett <michael@puckett.contact>
 status: DRAFT
 dateReceived: 2023-04-10
+discussionsTo: https://codeberg.org/fediverse/fep/issues/80
 ---
 
 # FEP-5bf0: Collection sorting and filtering

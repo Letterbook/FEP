@@ -3,7 +3,8 @@ slug: "f1d5"
 authors: CJ <cjslep@gmail.com>, silverpill <silverpill@firemail.cc>
 status: FINAL
 dateReceived: 2020-12-13
-discussionsTo: https://codeberg.org/fediverse/fep/issues/50
+dateFinalized: 2023-06-02
+discussionsTo: https://codeberg.org/fediverse/fep/issues/50, https://git.activitypub.dev/ActivityPubDev/Fediverse-Enhancement-Proposals/issues/12
 ---
 # FEP-f1d5: NodeInfo in Fediverse Software
 

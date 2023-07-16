@@ -4,6 +4,7 @@ authors: pukkamustard <pukkamustard@posteo.net>
 status: FINAL
 dateReceived: 2020-10-16
 dateFinalized: 2021-01-18
+discussionsTo: https://git.activitypub.dev/ActivityPubDev/Fediverse-Enhancement-Proposals/issues/10
 ---
 # FEP-a4ed: The Fediverse Enhancement Proposal Process
 

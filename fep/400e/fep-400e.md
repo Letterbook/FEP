@@ -4,6 +4,7 @@ authors: Gregory Klyushnikov <activitypub@grishka.me>
 status: FINAL
 dateReceived: 2021-02-16
 dateFinalized: 2022-02-04
+discussionsTo: https://codeberg.org/fediverse/fep/issues/5
 ---
 # FEP-400e: Publicly-appendable ActivityPub collections
 

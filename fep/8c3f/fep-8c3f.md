@@ -3,6 +3,7 @@ slug: "8c3f"
 authors: Diogo Peralta Cordeiro <mail@diogo.site>, Phablulo Joel <phablulo@gmail.com>
 status: DRAFT
 dateReceived: 2022-01-18
+discussionsTo: https://codeberg.org/fediverse/fep/issues/3
 ---
 # FEP-8c3f: Web Monetization
 

@@ -3,6 +3,7 @@ slug: "888d"
 authors: a <a@trwnh.com>
 status: DRAFT
 dateReceived: 2023-04-10
+discussionsTo: https://codeberg.org/fediverse/fep/issues/83
 ---
 
 # FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces

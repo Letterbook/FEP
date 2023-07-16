@@ -3,6 +3,7 @@ slug: "c118"
 authors: Tim Bray <tbray@texgtuality.com>
 status: DRAFT
 dateReceived: 2023-01-16
+discussionsTo: https://codeberg.org/fediverse/fep/issues/57
 ---
 # FEP-c118: Content licensing support
 

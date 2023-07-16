@@ -3,6 +3,7 @@ slug: "d767"
 authors: Lynn Foster <lynnfoster@social.coop>
 status: DRAFT
 dateReceived: 2023-04-02
+discussionsTo: https://codeberg.org/fediverse/fep/issues/76
 ---
 # FEP-d767: Extend ActivityPub with Valueflows
 

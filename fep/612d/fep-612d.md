@@ -3,6 +3,7 @@ slug: "612d"
 authors: Helge <helge.krueger@gmail.com>
 status: DRAFT
 dateReceived: 2023-04-18
+discussionsTo: https://codeberg.org/fediverse/fep/issues/89
 ---
 # FEP-612d: Identifying ActivityPub Objects through DNS
 

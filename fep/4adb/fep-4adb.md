@@ -3,6 +3,7 @@ slug: "4adb"
 authors: Helge <helge.krueger@gmail.com>
 status: DRAFT
 dateReceived: 2023-05-13
+discussionsTo: https://codeberg.org/fediverse/fep/issues/100
 ---
 # FEP-4adb: Dereferencing identifiers with webfinger
 
