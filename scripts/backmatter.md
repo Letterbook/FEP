@@ -12,7 +12,7 @@ To create and submit a FEP:
 $ echo -n "The title of my proposal" | sha256sum | cut -c-4
 b3f0
 ```
-4. Create a subdirectory of `fep/`(fep/) using the identifier you just computed.
+4. Create a subdirectory of [`fep/`](./fep/) using the identifier you just computed.
 5. Copy the FEP template ([fep-xxxx-template.md](./fep-xxxx-template.md)) to this subdirectory and change the filename appropriately.
 6. Use the identifer as the "slug" when filling out the frontmatter. 
     
