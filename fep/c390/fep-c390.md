@@ -36,7 +36,7 @@ Identity proofs SHOULD be attached to an actor object, under the `attachment` pr
 
 ### Proof generation
 
-The identity proof document MUST contain a data integrity proof, which includes a cryptographic proof and parameters required to verify it. It MUST be created according to the *Data Integrity* specification, section [4.1 Generate Proof](https://w3c.github.io/vc-data-integrity/#generate-proof). The value of `verificationMethod` property of the data integrity proof MUST match the value of `subject` property of the identity proof document.
+The identity proof document MUST contain a data integrity proof, which includes a cryptographic proof and parameters required to verify it. It MUST be created according to the *Data Integrity* specification, section [4.1 Add Proof](https://w3c.github.io/vc-data-integrity/#add-proof). The value of `verificationMethod` property of the data integrity proof MUST match the value of `subject` property of the identity proof document.
 
 The resulting data integrity proof MUST be added to identity proof document under the `proof` key.
 
@@ -61,15 +61,15 @@ Example:
     "attachment": [
         {
             "type": "VerifiableIdentityStatement",
-            "subject": "did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
+            "subject": "did:key:z6MkrJVnaZkeFzdQyMZu1cgjg7k1pZZ6pvBQ7XJPt4swbTQ2",
             "alsoKnownAs": "https://server.example/users/alice",
             "proof": {
                 "type": "DataIntegrityProof",
                 "cryptosuite": "jcs-eddsa-2022",
-                "created": "2022-11-12T00:00:00Z",
-                "verificationMethod": "did:key:z6MkhaXgBZDvotDkL5257faiztiGiC2QtKLGpbnnEGta2doK",
+                "created": "2023-02-24T23:36:38Z",
+                "verificationMethod": "did:key:z6MkrJVnaZkeFzdQyMZu1cgjg7k1pZZ6pvBQ7XJPt4swbTQ2",
                 "proofPurpose": "assertionMethod",
-                "proofValue": "<proof-value>"
+                "proofValue": "zYqr4eFzrnUWiBDaa7SmBhfaSBiv6BFRsDRGkmaCJpXArPBspFWNM6NXu77R7JakdzbUdjZihBa28LuWscZxSfRk"
             }
         }
     ]
@@ -87,6 +87,14 @@ Verification process MUST follow the *Data Integrity* specification, section [4.
 The consuming implementations SHOULD treat identities denoted by `subject` and `alsoKnownAs` properties of identity proof as belonging to the same entity.
 
 If two actors have identity proofs with the same `subject` property, they SHOULD be treated as different identities of the same entity.
+
+## Test vectors
+
+See [fep-c390.feature](./fep-c390.feature)
+
+## Implementations
+
+- [Mitra](https://codeberg.org/silverpill/mitra/src/commit/eb18e475efb71e461cd33c800c86cfe94144f5a3/FEDERATION.md#identity-proofs)
 
 ## References
 
