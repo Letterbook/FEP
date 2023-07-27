@@ -1,6 +1,6 @@
 ---
 slug: "xxxx"
-authors: Alyssa P. Hacker <alyssa.p.hacker@social.example>, Chatty Ben <ben@chatty.example>
+authors: Alyssa P. Hacker <@alyssa.p.hacker@social.example>, Chatty Ben <@ben@chatty.example>
 status: DRAFT
 dateReceived: 1970-01-01
 ---
@@ -20,6 +20,6 @@ dateReceived: 1970-01-01
 
 ## Copyright
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication 
+CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
 
 To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
