@@ -35,10 +35,10 @@ Feature: FEP-8b32: Object Integrity Proofs
                 },
                 "proof": {
                     "type": "DataIntegrityProof",
-                    "cryptosuite": "jcs-eddsa-2022",
+                    "cryptosuite": "eddsa-jcs-2022",
                     "verificationMethod": "https://server.example/users/alice#ed25519-key",
                     "proofPurpose": "assertionMethod",
-                    "proofValue": "z2nnHsFrkVJcmfprDuquc5bjjSZSUoFXbYZkyZFyptXVhwUwEBnhYftu9Jh25b9oZAn4WcPNY6mjhv2g3EuVc7fjC",
+                    "proofValue": "z3sXaxjKs4M3BRicwWA9peyNPJvJqxtGsDmpt1jjoHCjgeUf71TRFz56osPSfDErszyLp5Ks1EhYSgpDaNM977Rg2",
                     "created": "2023-02-24T23:36:38Z"
                 }
             }
@@ -61,10 +61,10 @@ Feature: FEP-8b32: Object Integrity Proofs
                 },
                 "proof": {
                     "type": "DataIntegrityProof",
-                    "cryptosuite": "jcs-eddsa-2022",
+                    "cryptosuite": "eddsa-jcs-2022",
                     "verificationMethod": "https://server.example/users/alice#ed25519-key",
                     "proofPurpose": "assertionMethod",
-                    "proofValue": "z2nnHsFrkVJcmfprDuquc5bjjSZSUoFXbYZkyZFyptXVhwUwEBnhYftu9Jh25b9oZAn4WcPNY6mjhv2g3EuVc7fjC",
+                    "proofValue": "z3sXaxjKs4M3BRicwWA9peyNPJvJqxtGsDmpt1jjoHCjgeUf71TRFz56osPSfDErszyLp5Ks1EhYSgpDaNM977Rg2",
                     "created": "2023-02-24T23:36:38Z"
                 }
             }

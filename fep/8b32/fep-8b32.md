@@ -73,20 +73,20 @@ Example of activity with integrity proof:
     },
     "proof": {
         "type": "DataIntegrityProof",
-        "cryptosuite": "jcs-eddsa-2022",
+        "cryptosuite": "eddsa-jcs-2022",
         "verificationMethod": "https://server.example/users/alice#ed25519-key",
         "proofPurpose": "assertionMethod",
-        "proofValue": "z2nnHsFrkVJcmfprDuquc5bjjSZSUoFXbYZkyZFyptXVhwUwEBnhYftu9Jh25b9oZAn4WcPNY6mjhv2g3EuVc7fjC",
+        "proofValue": "z3sXaxjKs4M3BRicwWA9peyNPJvJqxtGsDmpt1jjoHCjgeUf71TRFz56osPSfDErszyLp5Ks1EhYSgpDaNM977Rg2",
         "created": "2023-02-24T23:36:38Z"
     }
 }
 ```
 
-The list of attributes used in integrity proof is defined in *Data Integrity* specification, section [2.1 Proofs](https://w3c.github.io/vc-data-integrity/#proofs). The proof type SHOULD be `DataIntegrityProof`, as specified in section [3.1 DataIntegrityProof](https://w3c.github.io/vc-data-integrity/#dataintegrityproof). The value of `verificationMethod` attribute SHOULD be an URL of actor's public key or a [DID](https://www.w3.org/TR/did-core/) associated with an actor. The value of `proofPurpose` attribute MUST be `assertionMethod`.
+The list of attributes used in integrity proof is defined in *Data Integrity* specification, section [2.1 Proofs](https://w3c.github.io/vc-data-integrity/#proofs). The proof type SHOULD be `DataIntegrityProof`, as specified in section [1.3.1 DataIntegrityProof](https://w3c.github.io/vc-data-integrity/#dataintegrityproof). The value of `verificationMethod` attribute SHOULD be an URL of actor's public key or a [DID](https://www.w3.org/TR/did-core/) associated with an actor. The value of `proofPurpose` attribute MUST be `assertionMethod`.
 
 ### Proof verification
 
-The recipient of activity SHOULD perform proof verification if it contains integrity proofs. Verification process MUST follow the *Data Integrity* specification, section [4.2 Verify Proof](https://w3c.github.io/vc-data-integrity/#verify-proof). It starts with the removal of a `proof` value from the JSON object. Then the object is canonicalized, hashed and signature verification is performed according to the parameters specified in the proof.
+The recipient of activity SHOULD perform proof verification if it contains integrity proofs. Verification process MUST follow the *Data Integrity* specification, section [4.3 Verify Proof](https://w3c.github.io/vc-data-integrity/#verify-proof). It starts with the removal of a `proof` value from the JSON object. Then the object is canonicalized, hashed and signature verification is performed according to the parameters specified in the proof.
 
 If both HTTP signature and integrity proof are used, the integrity proof MUST be given precedence over HTTP signature. The HTTP signature MAY be dismissed.
 
@@ -94,7 +94,7 @@ If both HTTP signature and integrity proof are used, the integrity proof MUST be
 
 Implementers SHOULD pursue broad interoperability when choosing algorithms for integrity proofs.
 
-[jcs-eddsa-2022](https://w3c.github.io/vc-di-eddsa/#jcs-eddsa-2022) cryptosuite is RECOMMENDED:
+[eddsa-jcs-2022](https://w3c.github.io/vc-di-eddsa/#eddsa-jcs-2022) cryptosuite is RECOMMENDED:
 
 - Canonicalization: [JCS](https://www.rfc-editor.org/rfc/rfc8785)
 - Hashing: SHA-256
@@ -112,7 +112,7 @@ See [fep-8b32.feature](./fep-8b32.feature)
 
 ## Implementations
 
-- [Mitra](https://codeberg.org/silverpill/mitra/src/commit/b510241066bacb7285a0414124fa68aee40d9b43/FEDERATION.md#object-integrity-proofs)
+- [Mitra](https://codeberg.org/silverpill/mitra/src/commit/71db89f0ac323c76b7e08efffacf5d2454ec9afc/FEDERATION.md#object-integrity-proofs)
 - Vervis
   ([generation](https://codeberg.org/ForgeFed/Vervis/commit/e8e587af26944d3ea8d91f5c47cc3058cf261387),
   [verification](https://codeberg.org/ForgeFed/Vervis/commit/621275e25762a1c1e5860d07a6ff87b147deed4f))
@@ -123,7 +123,7 @@ See [fep-8b32.feature](./fep-8b32.feature)
 - [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html), 1997
 - [Data Integrity] Dave Longley, Manu Sporny, [Verifiable Credential Data Integrity 1.0](https://w3c.github.io/vc-data-integrity/), 2023
 - [DID] Manu Sporny, Dave Longley, Markus Sabadell, Drummond Reed, Orie Steele, Christopher Allen, [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/), 2022
-- [jcs-eddsa-2022] Dave Longley, Manu Sporny, [EdDSA Cryptosuite v2022](https://w3c.github.io/vc-di-eddsa/), 2023
+- [eddsa-jcs-2022] Dave Longley, Manu Sporny, [EdDSA Cryptosuite v2022](https://w3c.github.io/vc-di-eddsa/), 2023
 - [JCS] A. Rundgren, B. Jordan, S. Erdtman, [JSON Canonicalization Scheme (JCS)](https://www.rfc-editor.org/rfc/rfc8785), 2020
 
 ## Copyright
