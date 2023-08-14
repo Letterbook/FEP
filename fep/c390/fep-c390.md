@@ -40,7 +40,7 @@ The identity proof document MUST contain a data integrity proof, which includes 
 
 The resulting data integrity proof MUST be added to identity proof document under the `proof` key.
 
-Example:
+Example of an actor object linked to `did:key` identifier:
 
 ```json
 {
@@ -65,11 +65,11 @@ Example:
             "alsoKnownAs": "https://server.example/users/alice",
             "proof": {
                 "type": "DataIntegrityProof",
-                "cryptosuite": "jcs-eddsa-2022",
+                "cryptosuite": "eddsa-jcs-2022",
                 "created": "2023-02-24T23:36:38Z",
                 "verificationMethod": "did:key:z6MkrJVnaZkeFzdQyMZu1cgjg7k1pZZ6pvBQ7XJPt4swbTQ2",
                 "proofPurpose": "assertionMethod",
-                "proofValue": "zYqr4eFzrnUWiBDaa7SmBhfaSBiv6BFRsDRGkmaCJpXArPBspFWNM6NXu77R7JakdzbUdjZihBa28LuWscZxSfRk"
+                "proofValue": "z26W7TfJYD9DrGqnem245zNbeCbTwjb8avpduzi1JPhFrwML99CpP6gGXSKSXAcQdpGFBXF4kx7VwtXKhu7VDZJ54"
             }
         }
     ]
@@ -80,7 +80,7 @@ Example:
 
 The consuming implementations MUST check the authenticity of identity proof document by verifying its data integrity proof. If the proof can not be verified, or if the value of `verificationMethod` property of the data integrity proof doesn't match the value of `subject` property of the identity proof, or if the value of `alsoKnownAs` property of the identity proof doesn't match the actor ID, the identity proof MUST be discarded.
 
-Verification process MUST follow the *Data Integrity* specification, section [4.2 Verify Proof](https://w3c.github.io/vc-data-integrity/#verify-proof).
+Verification process MUST follow the *Data Integrity* specification, section [4.3 Verify Proof](https://w3c.github.io/vc-data-integrity/#verify-proof).
 
 ### Linking identities
 
@@ -88,13 +88,17 @@ The consuming implementations SHOULD treat identities denoted by `subject` and `
 
 If two actors have identity proofs with the same `subject` property, they SHOULD be treated as different identities of the same entity.
 
+### Implementation notes
+
+Servers MUST present identity proofs to clients in their original form. Clients MAY perform independent verification of identity proofs if needed.
+
 ## Test vectors
 
 See [fep-c390.feature](./fep-c390.feature)
 
 ## Implementations
 
-- [Mitra](https://codeberg.org/silverpill/mitra/src/commit/eb18e475efb71e461cd33c800c86cfe94144f5a3/FEDERATION.md#identity-proofs)
+- [Mitra](https://codeberg.org/silverpill/mitra/src/commit/71db89f0ac323c76b7e08efffacf5d2454ec9afc/FEDERATION.md#identity-proofs)
 
 ## References
 
