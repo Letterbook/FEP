@@ -1,7 +1,7 @@
 when:
   branch: [main]
 
-pipeline:
+steps:
   build:
     image: python:3.11-alpine
     commands:
