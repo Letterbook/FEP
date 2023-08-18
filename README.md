@@ -44,6 +44,8 @@ The FEP Process is an initiative of the [SocialHub](https://socialhub.activitypu
 | [FEP-d36d: Sharing Content Across Federated Forums](./fep/d36d/fep-d36d.md) | `DRAFT` | [#125](https://codeberg.org/fediverse/fep/issues/125) | 2023-07-01 | - |
 | [FEP-1970: Chat Links](./fep/1970/fep-1970.md) | `DRAFT` | [#128](https://codeberg.org/fediverse/fep/issues/128) | 2023-07-04 | - |
 | [FEP-521a: Representing actor's public keys](./fep/521a/fep-521a.md) | `DRAFT` | [#130](https://codeberg.org/fediverse/fep/issues/130) | 2023-07-08 | - |
+| [FEP-ae97: Client-side activity signing](./fep/ae97/fep-ae97.md) | `DRAFT` | [#148](https://codeberg.org/fediverse/fep/issues/148) | 2023-08-14 | - |
+| [FEP-0837: Federated Marketplace](./fep/0837/fep-0837.md) | `DRAFT` | [#147](https://codeberg.org/fediverse/fep/issues/147) | 2023-08-17 | - |
 
 ## Submitting a FEP
 

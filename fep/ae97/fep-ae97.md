@@ -3,6 +3,7 @@ slug: "ae97"
 authors: silverpill <silverpill@firemail.cc>
 status: DRAFT
 dateReceived: 2023-08-14
+discussionsTo: https://codeberg.org/fediverse/fep/issues/148
 ---
 # FEP-ae97: Client-side activity signing
 
