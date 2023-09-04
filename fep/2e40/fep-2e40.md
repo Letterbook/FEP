@@ -1,7 +1,7 @@
 ---
 slug: "2e40"
 authors: Helge Krueger <helge.krueger@gmail.com>
-status: DRAFT
+status: WITHDRAWN
 dateReceived:  2023-02-13
 discussionsTo: https://codeberg.org/fediverse/fep/issues/62
 ---
@@ -20,6 +20,8 @@ This FEP will
 - Define a process to elevate Terms to be common
 - Define a process to create specialized Vocabularies
 - Using [FEP-61CE] as an example how this process can be used.
+
+__Note__: Withdrawn as no longer compatible with the FEP repository structure, see [this issue](https://codeberg.org/fediverse/fep/issues/134).
 
 ## Background and Terminology
 
