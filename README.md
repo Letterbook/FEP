@@ -28,7 +28,7 @@ The FEP Process is an initiative of the [SocialHub](https://socialhub.activitypu
 | [FEP-cb76: Content Addressed Vocabulary](./fep/cb76/fep-cb76.md) | `DRAFT` | [#41](https://codeberg.org/fediverse/fep/issues/41) | 2022-11-29 | - |
 | [FEP-fb2a: Actor metadata](./fep/fb2a/fep-fb2a.md) | `DRAFT` | [#45](https://codeberg.org/fediverse/fep/issues/45) | 2022-12-09 | - |
 | [FEP-c118: Content licensing support](./fep/c118/fep-c118.md) | `DRAFT` | [#57](https://codeberg.org/fediverse/fep/issues/57) | 2023-01-16 | - |
-| [FEP-2e40: The FEP Vocabulary Extension Process](./fep/2e40/fep-2e40.md) | `DRAFT` | [#62](https://codeberg.org/fediverse/fep/issues/62) | 2023-02-13 | - |
+| [FEP-2e40: The FEP Vocabulary Extension Process](./fep/2e40/fep-2e40.md) | `WITHDRAWN` | [#62](https://codeberg.org/fediverse/fep/issues/62) | 2023-02-13 | - |
 | [FEP-7888: Demystifying the context property](./fep/7888/fep-7888.md) | `DRAFT` | [#68](https://codeberg.org/fediverse/fep/issues/68) | 2023-03-14 | - |
 | [FEP-d767: Extend ActivityPub with Valueflows](./fep/d767/fep-d767.md) | `DRAFT` | [#76](https://codeberg.org/fediverse/fep/issues/76) | 2023-04-02 | - |
 | [FEP-5bf0: Collection sorting and filtering](./fep/5bf0/fep-5bf0.md) | `DRAFT` | [#80](https://codeberg.org/fediverse/fep/issues/80) | 2023-04-10 | - |
