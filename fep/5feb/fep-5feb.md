@@ -1,7 +1,9 @@
 ---
+slug: "5feb"
 authors: Claire <claire.fep-1d7d@sitedethib.com>
 status: DRAFT
 dateReceived: 2023-09-06
+discussionsTo: https://codeberg.org/fediverse/fep/issues/154
 ---
 # FEP-5feb: Search indexing consent for actors
 
