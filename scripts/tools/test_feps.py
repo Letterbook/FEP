@@ -16,6 +16,11 @@ def test_fep(fep):
     assert parsed_frontmatter["slug"] == f'"{fep}"'
     assert "authors" in parsed_frontmatter
 
+    if parsed_frontmatter["status"] == "FINAL":
+        assert "dateFinalized" in parsed_frontmatter
+    if parsed_frontmatter["status"] == "WITHDRAWN":
+        assert "dateWithdrawn" in parsed_frontmatter
+
     assert "## Summary" in content
     assert "## Copyright" in content
 

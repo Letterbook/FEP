@@ -25,6 +25,8 @@ for fep in fep_files:
 
     if "dateFinalized" in parsed:
         date_final = parsed["dateFinalized"]
+    elif "dateWithdrawn" in parsed:
+        date_final = parsed["dateWithdrawn"]
     else:
         date_final = "-"
     result.append(
