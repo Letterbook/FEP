@@ -11,16 +11,15 @@ and note the slug.
 python scripts/create_issue.py $SLUG
 ```
 
-creates the tracking issue and updates the fep with the information.
-This script prints the issue url, you will need it later to add the
-link to the SocialHub discussion. Then run
+creates the tracking issue and updates the FEP with the information.
+Then run
 
 ```bash
 python scripts/create_readme.py
 ```
 
 to update the table in `README.md`. You are now ready to commit the
-changes to the FEP (added discussionsTo to frontmatter) and README.md,
+changes to the FEP (added `discussionsTo` to frontmatter) and README.md,
 added the new FEP.
 
 Run
@@ -32,7 +31,7 @@ python scripts/create_topic.py $SLUG
 and following the instructions to create a topic on SocialHub to discuss
 the FEP.
 
-Finally, add the link to the SocialHub issue to the tracking issue, created above.
+Finally, add the link to the SocialHub topic to the tracking issue, created above.
 
 ## Configuration
 
@@ -46,7 +45,7 @@ Add a file `config.json` to the directory `scripts` with content
 }
 ```
 
-The API token can be obtained by visiting [https://codeberg.org/user/settings/applications](https://codeberg.org/user/settings/applications) and generating one with scope "public_repo".
+The API token can be obtained by visiting [https://codeberg.org/user/settings/applications](https://codeberg.org/user/settings/applications) and generating one with scope `write:issue`.
 
 ## Setup for running pytest
 
