@@ -49,7 +49,7 @@ Actor metadata fields may also take the form of a link rather than a content val
 
 Existing implementations currently using the incorrect IRIs `http://schema.org#PropertyValue` and `http://schema.org#value` may wish to maintain backwards compatibility during a transitional period by serving both legacy representations as well as representations according to this FEP. The following algorithm may be used to support the legacy implementations while also favoring the implementation within this FEP:
 
-- Filter the `attachment` array for items of type `Note`. Take `name` and `content` from each remaining item.
+- Filter the `attachment` array for items of type `Note` or `Link`. Take `name` and `content` from each remaining item if the type is `Note`, or take `name` and `href` if the type is `Link`. If the type is `Link` and the `rel` contains `"me"`, attempt to verify this link using rel-me verification.
 - If none are found, filter the `attachment` array for items of type `http://schema.org#PropertyValue`. Take `name` and `http://schema.org#value` from each remaining item.
 
 After some transitional period, implementations may wish to simplify their logic by filtering only for items of type `Note` and drop support for `http://schema.org#PropertyValue`, `http://schema.org#value`, and the schema.org context entirely (assuming those implementations do not use any other vocabulary from the schema.org context).
