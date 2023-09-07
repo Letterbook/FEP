@@ -30,7 +30,7 @@ Thus, we can define a standard for actor metadata, largely drawing from prior ar
 
 General-purpose actor metadata fields SHOULD be included in the `attachment` array on the actor. If a more specific property exists and is a better fit for the specific metadata being expressed, then implementations MAY use that instead of or in addition to the more generic actor metadata.
 
-- Each generic metadata field SHOULD have a type of `Note`.
+- Each generic metadata field MUST have a type of `Note`.
 - Each metadata field MUST have a property of `name` representing the name (key) of the field.
 - Each metadata field MUST have a property of `content` representing the content (value) of the field.
 
@@ -38,7 +38,7 @@ General-purpose actor metadata fields SHOULD be included in the `attachment` arr
 
 Actor metadata fields may also take the form of a link rather than a content value.
 
-- Each generic link SHOULD have a type of `Link`.
+- Each generic link MUST have a type of `Link`.
 - Each link field MUST have a property of `href` representing the value of the link.
 - Each link field SHOULD have a property of `name` representing a label for the link.
 - Each link field SHOULD use `rel` values if an appropriate link relation exists.
