@@ -41,7 +41,7 @@ Actor metadata fields may also take the form of a link rather than a content val
 - Each generic link MUST have a type of `Link`.
 - Each link field MUST have a property of `href` representing the value of the link.
 - Each link field SHOULD have a property of `name` representing a label for the link.
-- Each link field SHOULD use `rel` values if an appropriate link relation exists.
+- Each link field SHOULD use `rel` values if an appropriate link relation exists, such as `"me"`.
 
 ## 4. Backwards compatibility with legacy implementations of profile fields using incorrect schema.org IRIs
 
