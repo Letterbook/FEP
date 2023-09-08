@@ -3,6 +3,7 @@ slug: "67ff"
 authors: silverpill <silverpill@firemail.cc>
 status: DRAFT
 dateReceived: 2023-09-05
+discussionsTo: https://codeberg.org/fediverse/fep/issues/157
 ---
 # FEP-67ff: FEDERATION.md
 
