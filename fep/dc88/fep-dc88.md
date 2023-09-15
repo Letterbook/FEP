@@ -2,7 +2,8 @@
 slug: "dc88"
 authors: Calvin Lee <pounce@integraldoma.in>
 status: DRAFT
-dateReceived: 1970-01-01
+dateReceived: 2023-09-12
+discussionsTo: https://codeberg.org/fediverse/fep/issues/161
 ---
 # FEP-dc88: Formatting Mathematics
 
