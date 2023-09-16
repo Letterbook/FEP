@@ -18,9 +18,10 @@ discussionsTo:
   - [3. Protocol Handlers](#3-protocol-handlers)
     - [3.1 Retrieving hyperlinked objects](#31-retrieving-hyperlinked-objects)
     - [3.2 Displaying hyperlinked objects](#32-displaying-hyperlinked-objects)
+    - [3.3 Servers](#33-servers)
+    - [3.4 Clients](#34-clients)
   - [4. Safety and Security](#4-safety-and-security)
 - [Example Scenarios](#example-scenarios)
-- [Security considerations](#security-considerations)
 - [References](#references)
 - [Copyright](#copyright)
 
@@ -32,11 +33,18 @@ defines a custom URL scheme which can be used by custom web-based protocol handl
 
 ## Motivation
 
-When a person follows a link to some ActivityPub powered site, the browser will navigate to the resource on that site. This is often *not* what the person wanted when they have an account on a different ActivityPub aware site. In order to interact with the linked resource, the person must separately open their home site and search for the resource. This is an awkward and sometimes confusing process, especially for people who are not already familiar with the idosyncracies of navigating a federated social network.
+When a person follows a link to some ActivityPub powered site, the browser will navigate to the resource on that site. This is often *not* what the person would have prefered when they have an account on a different ActivityPub aware site. In order to interact with the linked resource from their own account, the person must separately open their home site and search for the resource. This is an awkward and sometimes confusing process, especially for people who are not already familiar with the idosyncracies of navigating a federated social network.
 
-Web-based protocol handling is a feature of modern web browsers. This allows a site to register with the user's browser as a handler for custom I schemes. The browser will send links using that scheme to the registerd handler. This way, it's possible to direct links to the user's preferred server. The server can retrieve the resource and provide familiar and appropriate handling. Native ActivityPub clients can also take advantage of these URIs to provide similar handling. 
+Web-based protocol handling is a feature of modern web browsers. This allows a site to register with the user's browser as a handler for custom schemes. The browser will send links using that scheme to the registerd handler. This way, it's possible to direct links to the user's preferred server. The server can retrieve the resource and provide familiar and appropriate handling. Native ActivityPub clients can also take advantage of these URIs to provide similar handling. 
 
 ## Context
+
+Similar proposals such as [Fedilinks] and [Mastodon Issue 19679][Mastodon19679] have been made, and were even [briefly implemented in Mastodon][MastodonRemove]. There seems to be some concensus that custom protocol handlers have the technical capability to solve the problem of difficult interactions with cross-instance objects. There is also ample prior art for this approach. `mailto:` and `tel:` are common examples from web standards. Zoom uses an `zoommtg:` protocol to launch their desktop app, and Apple uses an `itms:` protocol to launch iTunes.
+
+It seems the main impediment was a perception of poor UX and limited adoption. This seems to be mostly a chicken-and-egg problem. That will always be a problem, until it's not. The whole history of the fediverse is of going ahead with interoperable standards and letting adoption follow implementation. This proposal also recommends behavior that is compatible with gradual adoption.
+
+Some [similar proposals][Mastodon14187] have also disussed targetting [action or behavior][Issue1], rather than content and schema. Encapsulating action is an understandable desire, and this proposal attempts to facilitate that. But the protocol aspect is firmly focussed on interaction with ActivityPub objects, without making any assumptions about the design or capabilities of current or future ActivityPub services. The hope is that this gives the resulting implementations better longevity. Documents can outlive software, and people should still be able to interact with them in useful ways. This also keeps the proposal scoped just to ActivityPub concerns, without imposing on other standards.
+
 
 ## Requirements
 
@@ -50,25 +58,27 @@ Origin server means the server that has authority for the ActivityPub object. Th
 
 Home server means the server with which a person has an account. This is the server that a person would log into in order to send, receive, and/or browse messages on the ActivityPub network.
 
+Handler is any software that handles the `web+activitypub:` scheme and protocol. Typically either a person's home server, or a client they have installed on their device.
+
 ActivityPub object means the JSON-LD document representing an ActivityPub Object, as described in the [ActivityPub] and [ActivityStreams] specifications.
 
-HTML representation means an HTML document rendered to display the ActivityPub object for human use.
+HTML representation means an HTML or other document rendered to display the ActivityPub object for human use.
 
 A client is any software that provides a human-friendly presentation of ActivityPub objects, or can interact with an ActivityPub server. For example, this could be a server's web UI or a native mobile app. This software does not necessarily utilize the C2S profile of the ActivityPub spec.
 
 ### 2. URI Scheme
 
-When creating hyperlinks to ActivityPub resources, individuals and applications SHOULD include a link using the custom `web+ap:` scheme. This scheme can be handled by web-based or native handlers registered with browsers by end-users. Because there's no guarantee that a given browser will have any registered handler for this scheme, these links SHOULD NOT be used in place of a link that refers to the resource by ID or an alternative HTML representation of it. Links using the `web+ap:` scheme SHOULD be used as an addition to those more canonical links.
+When creating hyperlinks to ActivityPub resources, individuals and applications SHOULD include a link using the custom `web+activitypub:` scheme. This scheme can be handled by web-based or native handlers registered with browsers by end-users. Because there's no guarantee that a given browser will have any registered handler for this scheme, these links SHOULD NOT be used in place of a link that refers to the resource by ID or an alternative HTML representation of it. Links using the `web+activitypub:` scheme SHOULD be used as an addition to those more canonical links.
 
-The address provided using the `web+ap:` scheme SHOULD be the same as the referenced ActivityPub object's ID. The address MAY instead be for an alternative human-readable address, or for an HTML representation of the object, as normal for the origin server.
+The address provided using the `web+activitypub:` scheme SHOULD be the same as the referenced ActivityPub object's ID. The address MAY instead be for an alternative human-readable address, or for an HTML representation of the object, as normal for the origin server.
 
 #### 2.1 Intents
 
-A `web+ap:` link MAY encapsulate an intent for an activity to be performed on or with the linked object. For example, a pre-assembled link could be used to directly Follow an actor or to Announce an object. An encapsulated intent MUST be represented by appending a query string to the target URI. It's possible that the target URI already includes a query string. In this case, to encapsulate an intent, the intent MUST append a new query parameter to the existing query string. A `web+ap:` link MUST NOT encapsulate more than one intent.
+A `web+activitypub:` link MAY encapsulate an intent for an activity to be performed on or with the linked object. For example, a pre-assembled link could be used to directly Follow an actor or to Announce an object. An encapsulated intent MUST be represented by appending a query string to the target URI. It's possible that the target URI already includes a query string. In this case, to encapsulate an intent, the intent MUST append a new query parameter to the existing query string. A `web+activitypub:` link MUST NOT encapsulate more than one intent.
 
-Including an encapsulated intent is OPTIONAL. The creator of the intent should keep in mind that the home server MAY support intents, but does not have to. Also keep in mind that the home server MUST provide a mechanism for the user to confirm or decline to perform the intended action. The use or purpose of the `web+ap:` link MUST NOT require that the intended activity is actually performed.
+Including an encapsulated intent is OPTIONAL. The creator of the intent should keep in mind that the home server MAY support intents, but does not have to. Also keep in mind that the home server MUST provide a mechanism for the user to confirm or decline to perform the intended action. The use or purpose of the `web+activitypub:` link MUST NOT require that the intended activity is actually performed.
 
-The format of the query parameter to encapsulate an intent is `intent=<activity>` where `<activity>` is any of the following activities described by the [Activity Streams vocabulary][ActivityVocabulary]. The activity string SHOULD be all lowercase. It's permissible to use any casing. But, there are many systems in the wild which might intercept or preprocess the URIs in a `web+ap:` link, and not all of those will respect the original casing.
+The format of the query parameter to encapsulate an intent is `intent=<activity>` where `<activity>` is any of the following activities described by the [Activity Streams vocabulary][ActivityVocabulary]. The activity string SHOULD be all lowercase. It's permissible to use any casing. But, there are many systems in the wild which might intercept or preprocess the URIs in a `web+activitypub:` link, and not all of those will respect the original casing.
 
 * add
 * announce
@@ -78,7 +88,7 @@ The format of the query parameter to encapsulate an intent is `intent=<activity>
 * invite
 * like
 
-The `web+ap:` link SHOULD NOT encapsulate an intent for any activity not listed above. In addition, the link MUST NOT encapsulate an intent for any of these activities.
+The `web+activitypub:` link SHOULD NOT encapsulate an intent for any activity not listed above. In addition, the link MUST NOT encapsulate an intent for any of the following activities. Implementers should exercise discretion regarding activities added as extensions to the ActivityPub specification. You should err on the side taking no action where there is doubt about the safety or security of doing so.
 
 * block
 * delete
@@ -90,34 +100,43 @@ The `web+ap:` link SHOULD NOT encapsulate an intent for any activity not listed 
 * offer
 * remove
 
-For security and privacy, `web+ap:` links MUST NOT include a username or password component. They also SHOULD NOT be relative URIs.
+For security and privacy, `web+activitypub:` links MUST NOT include a username or password component. They also SHOULD NOT be relative URIs.
 
 #### 2.2 Example links using the scheme
 
-Below are some examples of `web+ap:` hyperlinks that reflect some expected uses.
+Below are some examples of `web+activitypub:` hyperlinks that reflect some expected uses.
 
-* A link to enable one-click check in to pick up a shopping order
-`<a hfref="web+ap:shopping.example/pickup/12345?intent=arrive">Check in to pick up your order</a>`
+**One-click check in**
 
-* A link to enable one-click following from another website
-`<a href="web+ap:uss-enterprise.example/user/picard?intent=follow>Follow me on the fediverse</a>`
+A link to enable one-click check in to pick up a shopping order. This example does not include a scheme for the specified URI, so the handler should assume it is HTTPS.
 
-* A link to view a blog post published as an ActivityPub Article
-`<a href="web+ap:my-blog.example/article/write-your-first-fep>Read the article on your home instance</a>`
+`<a hfref="web+activitypub:shopping.example/pickup/12345?intent=arrive">Check in to pick up your order</a>`
+
+**One-click follow**
+
+A link to enable one-click following from another website. The handler must not perform the follow activity unless the user confirms it.
+
+`<a href="web+activitypub:https://uss-enterprise.example/user/picard?intent=follow>Follow me on the fediverse</a>`
+
+**Link with no intent**
+
+A link to view a blog post published as an ActivityPub Article
+
+`<a href="web+activitypub:https://my-blog.example/article/write-your-first-fep>Read the article on your home instance</a>`
 
 ### 3. Protocol Handlers
 
 #### 3.1 Retrieving hyperlinked objects
 
-ActivityPub applications that can retrieve remote objects and generate an HTML display MAY also implement a web-based protocol handler for the `web+ap:` URI scheme. The handler MUST attempt to load and display the specified URI as an `application/ld+json` document. If the host does not respond with an ActivityPub object, the handler SHOULD fallback to other methods it uses to locate ActivityPub objects, such as webfinger.
+ActivityPub applications that can retrieve remote objects and generate an HTML display MAY also implement a web-based protocol handler for the `web+activitypub:` URI scheme. Applications MAY use other available registration mechanisms, such as Android inents. The handler MUST attempt to load and display the specified URI as an `application/ld+json` document. If the origin does not respond with an ActivityPub object, the handler SHOULD fallback to other methods it uses to locate ActivityPub objects, such as webfinger.
 
-When resolving the given URI, the handler MUST ignore any provided username or password component, and it MUST exclude those components from the requests it makes to retrieve the object. The handler MUST also remove the intent parameter from the query string, if one is present.
+When resolving the given URI, the handler MUST ignore any provided username or password component, and it MUST exclude those components from the requests it makes to retrieve the object. If the given URI includes a query string with an intent parameter, the handler MUST exclude the intent parameter from the requests made to retrieve the object.
 
-The handler SHOULD NOT attempt to retrieve objects from a relative URI. There's likely no good reason for a `web+ap:` link to target a relative URI, and there is some risk it could be used to facilitate scams or phishing attempts by making it appear some third party has access to data they shouldn't.
+The handler SHOULD NOT attempt to retrieve objects from a relative URI. There's likely no good reason for a `web+activitypub:` link to target a relative URI, and there is some risk it could be used to facilitate scams or phishing attempts by making it appear some third party has access to data they shouldn't.
 
-If the provided `web+ap:` URI was given without a scheme, the handler SHOULD assume the HTTPS scheme.
+If the provided `web+activitypub:` URI was given without a scheme, the handler SHOULD assume the HTTPS scheme.
 
-Other than these points, the handler MUST attempt to resolve the URI exactly as given.
+Other than the above considerations, the handler MUST attempt to resolve the URI exactly as given.
 
 #### 3.2 Displaying hyperlinked objects
 
@@ -127,7 +146,7 @@ The handler SHOULD display the object in the normal way for the application, and
 
 The handler SHOULD enable the user to interact with the object normally, such as to generate Like or Announce activities referring to it.
 
-When the provided `web+ap:` URI includes an encapsulated intent, the handler MAY prompt the user to perform that intended activity. The handler MUST NOT perform that activity without explicit confirmation from the user. The handler MUST NOT perform the intended activity if it is one of the ones listed below. The handler MAY perform other activities, but SHOULD do so with care. `web+ap:` links are usually created by third parties. Be mindful that there is some risk of exposing sensitive information or facilitating harmful behavior when third parties are allowed to direct other people's actions.
+When the provided `web+activitypub:` URI includes an encapsulated intent, the handler MAY prompt the user to perform that intended activity. The handler MUST NOT perform that activity without explicit confirmation from the user. The handler MUST NOT perform or offer to perform the intended activity if it is one of the ones listed below. These activities present an elevated risk of disrupting the user's social connections or enlisting them in malicious activities. The handler MAY perform other activities, but SHOULD do so with care. `web+activitypub:` links are usually created by third parties. Be mindful that there is some risk of exposing sensitive information or facilitating harmful behavior when third parties are allowed to direct other people's actions.
 
 The handler MUST NOT perform any of these activities in response to an ecapsulated intent:
 
@@ -141,13 +160,21 @@ The handler MUST NOT perform any of these activities in response to an ecapsulat
 * offer
 * remove 
 
+#### 3.3 Servers
+
+ActivityPub servers MAY offer users an option to register with their browser as a `web+activitypub:` handler. Servers SHOULD NOT do this unless the user has authenticated with the server. The server SHOULD also offer a similar option to de-register as a handler. Servers SHOULD NOT attempt to register as a handler unless initiated by the user in some way. Servers MUST NOT attempt to automatically register as a handler again after a user has declined to allow it.
+
+#### 3.4 Clients
+
+Clients MAY offer users an option to register as handlers for `web+activitypub:` links. They SHOULD use whatever mechanism is appropriate to the client to do so. For instance, Android apps would likely use the intent system, and Windows apps could set the appropriate registry flags. Clients SHOULD provide a mechanism to de-register as a handler, where possible. Clients MAY defer this capability to the operating system as appropriate.
+
+If a client will retrieve the linked object itself, the client MUST adhere to the same specifications from section 3.1 and 3.2 as any other application would.
+
 ### 4. Safety and Security
 
+Because there is no way to know or control which application will ultimately handle any `web+activitypub:` link, creators SHOULD NOT include private or sensitive information in the link. Creators MUST NOT include any type of authenticating token or credential in the link. And handling applications themselves MUST apply all the normal and appropriate access controls when retrieving and displaying resources linked this way.
 
 ## Example Scenarios
-
-
-## Security considerations
 
 
 ## References
@@ -155,6 +182,7 @@ The handler MUST NOT perform any of these activities in response to an ecapsulat
 - \[ActivityPub\] Christine Lemmer Webber, Jessica Tallon, [ActivityPub], 2018
 - \[Web-based Protocol Handlers\] Mozilla Developer Network, [Web-based Protocol Handlers]
 - \[HTML Living Standard\] WHATWG, [HTML], 2023
+- \[Fedilinks] Fedilinks Authors, [Fedilinks]
 
 ## Copyright
 
@@ -169,3 +197,8 @@ To the extent possible under law, the authors of this Fediverse Enhancement Prop
 [HTML]: https://html.spec.whatwg.org/multipage/system-state.html#custom-handlers
 [ActivityStreams]: https://www.w3.org/TR/activitystreams-core/
 [ActivityVocabulary]: https://www.w3.org/TR/activitystreams-vocabulary
+[MastodonRemove]: https://github.com/mastodon/mastodon/pull/8127
+[Mastodon14187]: https://github.com/mastodon/mastodon/issues/14187
+[Mastodon19679]: https://github.com/mastodon/mastodon/issues/19679
+[Issue1]: https://codeberg.org/fediverse/fediverse-ideas/issues/1
+[Fedilinks]: https://fedilinks.org/spec/en/6-The-web-ap-URI
