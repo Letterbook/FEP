@@ -126,7 +126,7 @@ A link to view a blog post published as an ActivityPub Article
 
 #### 3.1 Retrieving hyperlinked objects
 
-ActivityPub applications that can retrieve remote objects and generate an HTML display MAY also implement a web-based protocol handler for the `web+activitypub:` URI scheme. Applications MAY use other available registration mechanisms, such as Android inents. The handler MUST attempt to load and display the specified URI as an `application/ld+json` document. If the origin does not respond with an ActivityPub object, the handler SHOULD fallback to other methods it uses to locate ActivityPub objects, such as webfinger.
+ActivityPub applications that can retrieve remote objects and generate an HTML display MAY also implement a web-based protocol handler for the `web+activitypub:` URI scheme. Applications MAY use other available registration mechanisms, such as Android inents. The handler MUST attempt to load the specified URI as an `application/ld+json` document. If the origin does not respond with an ActivityPub object, the handler SHOULD fallback to other methods it uses to locate ActivityPub objects, such as webfinger.
 
 When resolving the given URI, the handler MUST ignore any provided username or password component, and it MUST exclude those components from the requests it makes to retrieve the object. If the given URI includes a query string with an intent parameter, the handler MUST exclude the intent parameter from the requests made to retrieve the object.
 
