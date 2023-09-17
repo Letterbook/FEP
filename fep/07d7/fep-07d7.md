@@ -33,17 +33,17 @@ defines a custom URL scheme which can be used by custom web-based protocol handl
 
 ## Motivation
 
-When a person follows a link to some ActivityPub powered site, the browser will navigate to the resource on that site. This is often *not* what the person would have prefered when they have an account on a different ActivityPub aware site. In order to interact with the linked resource from their own account, the person must separately open their home site and search for the resource. This is an awkward and sometimes confusing process, especially for people who are not already familiar with the idosyncracies of navigating a federated social network.
+When a person follows a link to some ActivityPub powered site, the browser will navigate to the resource on that site. This is often *not* what the person would have prefered when they have an account on a different ActivityPub aware site. In order to interact with the linked resource from their own account, the person must separately open their home server and search for the resource. This is an awkward and sometimes confusing process, especially for people who are not already familiar with the idosyncracies of navigating a federated social network.
 
-Web-based protocol handling is a feature of modern web browsers. This allows a site to register with the user's browser as a handler for custom schemes. The browser will send links using that scheme to the registerd handler. This way, it's possible to direct links to the user's preferred server. The server can retrieve the resource and provide familiar and appropriate handling. Native ActivityPub clients can also take advantage of these URIs to provide similar handling. 
+Web-based protocol handling is a feature of modern web browsers. This allows a site to register with the user's browser as a handler for custom URI schemes. The browser will send links using that scheme to the registerd handler. This way, it's possible to direct links to the user's preferred server or application. The handler can retrieve the resource and provide familiar and appropriate presentation. Native ActivityPub clients can also take advantage of these URIs to provide similar handling. 
 
 ## Context
 
-Similar proposals such as [Fedilinks] and [Mastodon Issue 19679][Mastodon19679] have been made, and were even [briefly implemented in Mastodon][MastodonRemove]. There seems to be some concensus that custom protocol handlers have the technical capability to solve the problem of difficult interactions with cross-instance objects. There is also ample prior art for this approach. `mailto:` and `tel:` are common examples from web standards. Zoom uses an `zoommtg:` protocol to launch their desktop app, and Apple uses an `itms:` protocol to launch iTunes.
+Similar proposals such as [Fedilinks] and [Mastodon Issue 19679][Mastodon19679] have been made, and were even [briefly implemented in Mastodon][MastodonRemove]. There seems to be some concensus that custom protocol handlers have the technical capability to solve the problem of difficult interactions with cross-instance objects. There is also ample prior art for this approach. `mailto:` and `tel:` are common examples from web standards. Zoom uses a custom`zoommtg:` protocol to launch their desktop app, and Apple uses `itms:` to launch iTunes.
 
-It seems the main impediment was a perception of poor UX and limited adoption. This seems to be mostly a chicken-and-egg problem. That will always be a problem, until it's not. The whole history of the fediverse is of going ahead with interoperable standards and letting adoption follow implementation. This proposal also recommends behavior that is compatible with gradual adoption.
+It seems the main impediment to early attempts was a perception of poor UX and limited adoption. This seems to be mostly a chicken-and-egg problem. That will always be a problem, until it's not. In this case, it seems it would be helpful to let standards drive implementation, as the opposite hasn't ocurred. This proposal also recommends behavior that is compatible with gradual adoption.
 
-Some [similar proposals][Mastodon14187] have also disussed targetting [action or behavior][Issue1], rather than content and schema. Encapsulating action is an understandable desire, and this proposal attempts to facilitate that. But the protocol aspect is firmly focussed on interaction with ActivityPub objects, without making any assumptions about the design or capabilities of current or future ActivityPub services. The hope is that this gives the resulting implementations better longevity. Documents can outlive software, and people should still be able to interact with them in useful ways. This also keeps the proposal scoped just to ActivityPub concerns, without imposing on other standards.
+Some [similar proposals][Mastodon14187] have also disussed [emphasizing outcome][Issue1], rather than content. Encapsulating action is an understandable desire, and this proposal attempts to facilitate that. But the protocol aspect is firmly focussed on interaction with ActivityPub objects, without making any assumptions about the design or capabilities of current or future ActivityPub services. The hope is that this gives the resulting implementations better longevity. Documents can outlive software, and people should still be able to interact with them in useful ways. This also keeps the proposal scoped just to ActivityPub concerns, without imposing on other standards.
 
 
 ## Requirements
@@ -56,9 +56,7 @@ This proposal refers to ActivityPub objects as viewed and represented in multipl
 
 Origin server means the server that has authority for the ActivityPub object. This is the server that hosts and controls access to the object, and will recieve requests for the URI used as the object's ID.
 
-Home server means the server with which a person has an account. This is the server that a person would log into in order to send, receive, and/or browse messages on the ActivityPub network.
-
-Handler is any software that handles the `web+activitypub:` scheme and protocol. Typically either a person's home server, or a client they have installed on their device.
+Handler is any software that handles the `web+activitypub:` scheme and protocol. Typically either an ActivityPub server where the person has an account, or a client application they have installed on their device.
 
 ActivityPub object means the JSON-LD document representing an ActivityPub Object, as described in the [ActivityPub] and [ActivityStreams] specifications.
 
@@ -76,7 +74,7 @@ The address provided using the `web+activitypub:` scheme SHOULD be the same as t
 
 A `web+activitypub:` link MAY encapsulate an intent for an activity to be performed on or with the linked object. For example, a pre-assembled link could be used to directly Follow an actor or to Announce an object. An encapsulated intent MUST be represented by appending a query string to the target URI. It's possible that the target URI already includes a query string. In this case, to encapsulate an intent, the intent MUST append a new query parameter to the existing query string. A `web+activitypub:` link MUST NOT encapsulate more than one intent.
 
-Including an encapsulated intent is OPTIONAL. The creator of the intent should keep in mind that the home server MAY support intents, but does not have to. Also keep in mind that the home server MUST provide a mechanism for the user to confirm or decline to perform the intended action. The use or purpose of the `web+activitypub:` link MUST NOT require that the intended activity is actually performed.
+Including an encapsulated intent is OPTIONAL. Responding to the intent is also OPTIONAL. The creator of the intent should keep in mind that the handler MAY support intents, but does not have to. Also keep in mind that the handler MUST provide a mechanism for the user to confirm or decline to perform the intended action. The use or purpose of the `web+activitypub:` link MUST NOT require that the intended activity is actually performed.
 
 The format of the query parameter to encapsulate an intent is `intent=<activity>` where `<activity>` is any of the following activities described by the [Activity Streams vocabulary][ActivityVocabulary]. The activity string SHOULD be all lowercase. It's permissible to use any casing. But, there are many systems in the wild which might intercept or preprocess the URIs in a `web+activitypub:` link, and not all of those will respect the original casing.
 
