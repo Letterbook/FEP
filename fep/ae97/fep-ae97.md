@@ -89,7 +89,9 @@ If identity proof is valid, the server MUST create a new actor document, and att
 
 The client MUST sign all activities by adding [FEP-8b32](https://codeberg.org/fediverse/fep/src/branch/main/fep/8b32/fep-8b32.md) integrity proofs to them. The `verificationMethod` property of integrity proof MUST correspond to the `subject` of one of identity proofs attached to an actor.
 
-Client submits signed activities to actor's outbox. Contrary to what [ActivityPub](https://www.w3.org/TR/activitypub/#client-to-server-interactions) specification prescribes, the server MUST not overwrite the ID of activity. Instead of assigning a new ID, the server MUST verify that provided ID has not been used before.
+Client submits signed activities to actor's outbox. Contrary to what [ActivityPub](https://www.w3.org/TR/activitypub/#client-to-server-interactions) specification prescribes, the server MUST NOT overwrite the ID of activity. Instead of assigning a new ID, the server MUST verify that provided ID has not been used before. If activity ID is an HTTP(S) URI, the server MUST check that its [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) is the same as the server's origin. The server MAY put additional constraints on the structure of activity IDs if necessary.
+
+If activity contains a wrapped object (as in `Create` and `Update` activities), and the object is not transient, it MUST be signed as well. The server MUST validate object IDs in the same way it validates activity IDs.
 
 The server MUST deliver activities to their indended audiences without altering them. Recipients of signed activities (including the actor's server) MUST verify integrity proofs on them. If verification method of the integrity proof doesn't match any of FEP-c390 identity proofs attached to the actor, the activity MUST be rejected.
 
@@ -99,6 +101,73 @@ To maintain interoperability with existing software, the server MAY generate a p
 
 If recipient supports FEP-8b32, and both HTTP signature and integrity proof are present, the integrity proof MUST be given precedence over HTTP signature.
 
+## Server independent IDs
+
+(This section is non-normative.)
+
+Clients may derive object IDs from user's identity, if chosen DID method supports [DID URLs](https://www.w3.org/TR/did-core/#did-url-syntax).
+
+Example:
+
+```json
+{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://w3id.org/security/data-integrity/v1"
+  ],
+  "type": "Create",
+  "id": "did:example:123456/actor/c9e7bd01-8bd9-4a8b-99ec-97eb2f7f24ce",
+  "object": {
+    "type": "Note",
+    "id": "did:example:123456/actor/dc505858-08ec-4a80-81dd-e6670fd8c55f",
+    "attributedTo": "did:example:123456/actor",
+    "inReplyTo": "did:example:987654/actor/f66a006b-fe66-4ca6-9a4c-b292e33712ec",
+    "content": "Hello world!",
+    "to": "did:example:123456/actor/followers",
+    "proof": {
+      "type": "DataIntegrityProof",
+      "cryptosuite": "eddsa-jcs-2022",
+      "created": "2023-02-24T23:36:38Z",
+      "verificationMethod": "did:example:123456",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "..."
+    }
+  },
+  "to": "did:example:123456/actor/followers",
+  "proof": {
+    "type": "DataIntegrityProof",
+    "cryptosuite": "eddsa-jcs-2022",
+    "created": "2023-02-24T23:36:38Z",
+    "verificationMethod": "did:example:123456",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "..."
+  }
+}
+```
+
+For generative DID methods such as `did:key` implementers may attach a list of hosts where ID can be resolved using WebFinger as specified in [FEP-4adb](https://codeberg.org/fediverse/fep/src/branch/main/fep/4adb/fep-4adb.md).
+
+Example:
+
+```
+did:key:z6MkrJVnaZkeFzdQyMZu1cgjg7k1pZZ6pvBQ7XJPt4swbTQ2?hosts=server1.example,server2.example
+```
+
+This identifier can be looked up using WebFinger:
+
+```json
+{
+  "subject": "did:key:z6MkrJVnaZkeFzdQyMZu1cgjg7k1pZZ6pvBQ7XJPt4swbTQ2",
+  "links": [
+    {
+      "rel": "self",
+      "type": "application/ld+json; profile=\"https://www.w3.org/ns/activitystreams\"",
+      "href": "https://server1.example/users/alice"
+    }
+  ]
+}
+```
+
 ## References
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
@@ -106,6 +175,7 @@ If recipient supports FEP-8b32, and both HTTP signature and integrity proof are 
 - [Decentralized Identifier] Manu Sporny, Dave Longley, Markus Sabadell, Drummond Reed, Orie Steele, Christopher Allen, [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/), 2022
 - [FEP-c390] silverpill, [FEP-c390: Identity Proofs](https://codeberg.org/fediverse/fep/src/branch/main/fep/c390/fep-c390.md), 2022
 - [FEP-8b32] silverpill, [FEP-8b32: Object Integrity Proofs](https://codeberg.org/fediverse/fep/src/branch/main/fep/8b32/fep-8b32.md), 2022
+- [FEP-4adb] Helge, [FEP-4adb: Dereferencing identifiers with webfinger](https://codeberg.org/fediverse/fep/src/branch/main/fep/4adb/fep-4adb.md), 2023
 
 ## Copyright
 
