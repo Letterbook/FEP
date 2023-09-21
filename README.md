@@ -50,6 +50,7 @@ The FEP Process is an initiative of the [SocialHub](https://socialhub.activitypu
 | [FEP-5feb: Search indexing consent for actors](./fep/5feb/fep-5feb.md) | `DRAFT` | [#154](https://codeberg.org/fediverse/fep/issues/154) | 2023-09-06 | - |
 | [FEP-dc88: Formatting Mathematics](./fep/dc88/fep-dc88.md) | `DRAFT` | [#161](https://codeberg.org/fediverse/fep/issues/161) | 2023-09-12 | - |
 | [FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API](./fep/d8c2/fep-d8c2.md) | `DRAFT` | [#165](https://codeberg.org/fediverse/fep/issues/165) | 2023-09-17 | - |
+| [FEP-7628: Move actor](./fep/7628/fep-7628.md) | `DRAFT` | [#168](https://codeberg.org/fediverse/fep/issues/168) | 2023-09-20 | - |
 
 ## Submitting a FEP
 
