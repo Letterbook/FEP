@@ -5,6 +5,8 @@ from tools import FepFile
 import json
 from urllib.request import Request, urlopen
 
+DRAFT_FEP_LABEL = 149758
+
 parser = ArgumentParser("Create tracking issue for FEP")
 parser.add_argument("fep", help="slug of the FEP")
 args = parser.parse_args()
@@ -41,7 +43,9 @@ request = Request(
     f"https://codeberg.org/api/v1/repos/{config['owner']}/{config['repo']}/issues"
 )
 request.add_header("Content-Type", "application/json; charset=utf-8")
-request_body = json.dumps({"title": title, "body": body}).encode("utf-8")
+request_body = json.dumps(
+    {"title": title, "body": body, "labels": [DRAFT_FEP_LABEL]}
+).encode("utf-8")
 request.add_header("authorization", f"Bearer {config['token']}")
 request.add_header("Content-Length", len(request_body))
 request.data = request_body
