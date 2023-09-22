@@ -21,15 +21,13 @@ discussionsTo:
     - [3.3 Servers](#33-servers)
     - [3.4 Clients](#34-clients)
   - [4. Safety and Security](#4-safety-and-security)
-- [Example Scenarios](#example-scenarios)
 - [References](#references)
 - [Copyright](#copyright)
 
 
 ## Summary
 
-This specification addresses sometimes difficult interactions with ActivityPub resources hosted on remote servers. It
-defines a custom URL scheme which can be used by custom web-based protocol handlers to route hyperlinks to those resources to the user's preferred server. It additionally advises when ActivityPub servers can include these links in HTML views they generate, and how clients and servers can implement those web-based protocol handlers.
+This specification addresses sometimes difficult interactions with ActivityPub resources hosted on remote servers. It defines a custom URL scheme which can be used by custom web-based protocol handlers to route hyperlinks to those resources to the user's preferred server. It additionally advises when ActivityPub servers can include these links in HTML views they generate, and how clients and servers can implement those web-based protocol handlers.
 
 ## Motivation
 
@@ -172,15 +170,13 @@ If a client will retrieve the linked object itself, the client MUST adhere to th
 
 Because there is no way to know or control which application will ultimately handle any `web+activitypub:` link, creators SHOULD NOT include private or sensitive information in the link. Creators MUST NOT include any type of authenticating token or credential in the link. And handling applications themselves MUST apply all the normal and appropriate access controls when retrieving and displaying resources linked this way.
 
-## Example Scenarios
-
 
 ## References
 
 - \[ActivityPub\] Christine Lemmer Webber, Jessica Tallon, [ActivityPub], 2018
 - \[Web-based Protocol Handlers\] Mozilla Developer Network, [Web-based Protocol Handlers]
 - \[HTML Living Standard\] WHATWG, [HTML], 2023
-- \[Fedilinks] Fedilinks Authors, [Fedilinks]
+- \[Fedilinks\] Fedilinks Authors, [Fedilinks]
 
 ## Copyright
 
